@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{A78F4BA7-E1FB-4FF3-A7FC-9B9E30B48980}</ProjectGuid>
+    <RootNamespace>Emgine</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\SDL2-2.0.22\include;$(SolutionDir)ThirdParty\fmod\core\inc;$(ProjectDir);$(SolutionDir)ThirdParty\rapidjson\include;$(SolutionDir)ThirdParty\box2d\include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;fmod_vc.lib;SDL2_ttf.lib;SDL2_image.lib;box2d.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\SDL2-2.0.22\lib\$(Platform);$(SolutionDir)ThirdParty\fmod\core\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\box2d\lib</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\SDL2-2.0.22\include;$(SolutionDir)ThirdParty\fmod\core\inc;$(ProjectDir);$(SolutionDir)ThirdParty\rapidjson\include;$(SolutionDir)ThirdParty\box2d\include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;fmod_vc.lib;SDL2_ttf.lib;SDL2_image.lib;box2d.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\SDL2-2.0.22\lib\$(Platform);$(SolutionDir)ThirdParty\fmod\core\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\box2d\lib</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\SDL2-2.0.22\include;$(SolutionDir)ThirdParty\fmod\core\inc;$(ProjectDir);$(SolutionDir)ThirdParty\rapidjson\include;$(SolutionDir)ThirdParty\box2d\include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;fmod_vc.lib;SDL2_ttf.lib;SDL2_image.lib;box2d.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\SDL2-2.0.22\lib\$(Platform);$(SolutionDir)ThirdParty\fmod\core\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\box2d\lib</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\SDL2-2.0.22\include;$(SolutionDir)ThirdParty\fmod\core\inc;$(ProjectDir);$(SolutionDir)ThirdParty\rapidjson\include;$(SolutionDir)ThirdParty\box2d\include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;fmod_vc.lib;SDL2_ttf.lib;SDL2_image.lib;box2d.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\SDL2-2.0.22\lib\$(Platform);$(SolutionDir)ThirdParty\fmod\core\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\box2d\lib</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Audio\audioChannel.cpp" />
+    <ClCompile Include="Audio\audioSystem.cpp" />
+    <ClCompile Include="Components\audioComponent.cpp" />
+    <ClCompile Include="Components\cameraComponent.cpp" />
+    <ClCompile Include="Components\characterComponent.cpp" />
+    <ClCompile Include="Components\collisionComponent.cpp" />
+    <ClCompile Include="Components\physicsComponent.cpp" />
+    <ClCompile Include="Components\playerComponent.cpp" />
+    <ClCompile Include="Components\rbPhysicsComponent.cpp" />
+    <ClCompile Include="Components\RenderComponents\modelComponent.cpp" />
+    <ClCompile Include="Components\RenderComponents\spriteAnimComponent.cpp" />
+    <ClCompile Include="Components\RenderComponents\spriteComponent.cpp" />
+    <ClCompile Include="Components\RenderComponents\textComponent.cpp" />
+    <ClCompile Include="Components\tilemapComponent.cpp" />
+    <ClCompile Include="Core\file.cpp" />
+    <ClCompile Include="Core\logger.cpp" />
+    <ClCompile Include="Core\memory.cpp" />
+    <ClCompile Include="Core\time.cpp" />
+    <ClCompile Include="engine.cpp" />
+    <ClCompile Include="Framework\actor.cpp" />
+    <ClCompile Include="Framework\eventManager.cpp" />
+    <ClCompile Include="Framework\scene.cpp" />
+    <ClCompile Include="Input\inputSystem.cpp" />
+    <ClCompile Include="Math\color.cpp" />
+    <ClCompile Include="Math\mathUtils.cpp" />
+    <ClCompile Include="Math\matrix2x2.cpp" />
+    <ClCompile Include="Math\matrix3x3.cpp" />
+    <ClCompile Include="Math\transform.cpp" />
+    <ClCompile Include="Math\vector2.cpp" />
+    <ClCompile Include="Physics\contactListener.cpp" />
+    <ClCompile Include="Physics\physicsSystem.cpp" />
+    <ClCompile Include="Renderer\font.cpp" />
+    <ClCompile Include="Renderer\model.cpp" />
+    <ClCompile Include="Renderer\renderer.cpp" />
+    <ClCompile Include="Renderer\text.cpp" />
+    <ClCompile Include="Renderer\texture.cpp" />
+    <ClCompile Include="Resource\resourceManager.cpp" />
+    <ClCompile Include="Serialization\json.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Audio\audioChannel.h" />
+    <ClInclude Include="Audio\audioSystem.h" />
+    <ClInclude Include="Components\audioComponent.h" />
+    <ClInclude Include="Components\cameraComponent.h" />
+    <ClInclude Include="Components\characterComponent.h" />
+    <ClInclude Include="Components\collisionComponent.h" />
+    <ClInclude Include="Components\includes.h" />
+    <ClInclude Include="Components\physicsComponent.h" />
+    <ClInclude Include="Components\playerComponent.h" />
+    <ClInclude Include="Components\rbPhysicsComponent.h" />
+    <ClInclude Include="Components\RenderComponents\modelComponent.h" />
+    <ClInclude Include="Components\RenderComponents\renderComponent.h" />
+    <ClInclude Include="Components\RenderComponents\spriteAnimComponent.h" />
+    <ClInclude Include="Components\RenderComponents\spriteComponent.h" />
+    <ClInclude Include="Components\RenderComponents\textComponent.h" />
+    <ClInclude Include="Components\tilemapComponent.h" />
+    <ClInclude Include="Core\file.h" />
+    <ClInclude Include="Core\logger.h" />
+    <ClInclude Include="Core\memory.h" />
+    <ClInclude Include="Core\time.h" />
+    <ClInclude Include="engine.h" />
+    <ClInclude Include="Framework\actor.h" />
+    <ClInclude Include="Framework\component.h" />
+    <ClInclude Include="Framework\event.h" />
+    <ClInclude Include="Framework\eventManager.h" />
+    <ClInclude Include="Framework\factory.h" />
+    <ClInclude Include="Framework\game.h" />
+    <ClInclude Include="Framework\gameObject.h" />
+    <ClInclude Include="Framework\scene.h" />
+    <ClInclude Include="Framework\singleton.h" />
+    <ClInclude Include="Input\inputSystem.h" />
+    <ClInclude Include="Math\color.h" />
+    <ClInclude Include="Math\mathUtils.h" />
+    <ClInclude Include="Math\matrix2x2.h" />
+    <ClInclude Include="Math\matrix3x3.h" />
+    <ClInclude Include="Math\random.h" />
+    <ClInclude Include="Math\rect.h" />
+    <ClInclude Include="Math\transform.h" />
+    <ClInclude Include="Math\vector2.h" />
+    <ClInclude Include="Math\vector3.h" />
+    <ClInclude Include="Physics\collision.h" />
+    <ClInclude Include="Physics\contactListener.h" />
+    <ClInclude Include="Physics\physicsSystem.h" />
+    <ClInclude Include="Renderer\font.h" />
+    <ClInclude Include="Renderer\model.h" />
+    <ClInclude Include="Renderer\renderer.h" />
+    <ClInclude Include="Renderer\text.h" />
+    <ClInclude Include="Renderer\texture.h" />
+    <ClInclude Include="Resource\resource.h" />
+    <ClInclude Include="Resource\resourceManager.h" />
+    <ClInclude Include="Serialization\json.h" />
+    <ClInclude Include="Serialization\serializable.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
