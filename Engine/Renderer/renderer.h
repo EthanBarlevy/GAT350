@@ -2,6 +2,8 @@
 #include "Math/vector2.h"
 #include "Math/color.h"
 #include "Math/matrix3x3.h"
+#include <glad/glad.h>
+#include <SDL.h>
 
 struct SDL_Renderer;
 struct SDL_Window;
@@ -22,7 +24,7 @@ namespace vl
 		void Initialize();
 		void Shutodwn();
 
-		void CreateWindow(const char* name, int width, int height);
+		void CreateWindow(const char* name, int width, int height, bool fullscreen = false);
 
 		void BeginFrame();
 		void EndFrame();
@@ -58,6 +60,8 @@ namespace vl
 		Color m_clearColor {0, 0, 0, 255};
 		SDL_Renderer* m_renderer{ nullptr };
 		SDL_Window* m_window{ nullptr };
+
+		SDL_GLContext m_context;
 
 		Matrix3x3 m_view;
 		Matrix3x3 m_viewport;
