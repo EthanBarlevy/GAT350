@@ -1,5 +1,5 @@
 #include "json.h"
-#include "rapidjson/istreamwrapper.h"
+#include "istreamwrapper.h"
 #include "Core/logger.h"
 #include "Math/vector2.h"
 #include "Math/color.h"

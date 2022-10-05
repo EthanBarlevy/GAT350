@@ -10,6 +10,35 @@ namespace vl
 	PhysicsSystem g_physicsSystem;
 	EventManager g_eventManager;
 
+	void Engine::Initialize()
+	{
+		g_renderer.Initialize();
+		g_inputSystem.Initialize();
+		g_audioSystem.Initialize();
+		g_resourceManager.Initialize();
+		g_physicsSystem.Initialize();
+		g_eventManager.Initialize();
+	}
+
+	void Engine::Shutdown()
+	{
+		g_renderer.Shutodwn();
+		g_inputSystem.Shutdown();
+		g_audioSystem.Shutdown();
+		g_resourceManager.Shutodwn();
+		g_physicsSystem.Shutdown();
+		g_eventManager.Shutdown();
+	}
+
+	void Engine::Update()
+	{
+		g_time.Tick();
+		g_inputSystem.Update();
+		g_audioSystem.Update();
+		g_physicsSystem.Update();
+		g_eventManager.Update();
+	}
+
 	void Engine::Register()
 	{
 		REGISTER_CLASS(Actor);

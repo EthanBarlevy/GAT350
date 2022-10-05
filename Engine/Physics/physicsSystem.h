@@ -1,7 +1,7 @@
 #pragma once
 #include "contactListener.h"
 #include "Math/vector2.h"
-#include "box2d/box2d.h"
+#include "box2d.h"
 #include <memory>
 
 // lmao this is kinda gross
