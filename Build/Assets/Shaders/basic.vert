@@ -1,8 +1,13 @@
 #version 430 core 
 
-in vec3 position;
+in vec3 vPosition; // 0
+in vec3 vColor; // 1
+
+out vec3 color;
 
 void main()
 {
-	gl_Position = vec4(position, 1.0);
+	color = vColor;
+
+	gl_Position = vec4(vPosition, 1.0);
 }

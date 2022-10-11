@@ -29,6 +29,7 @@
 #include "Renderer/font.h"
 #include "Renderer/text.h"
 #include "Renderer/texture.h"
+#include "Renderer/shader.h"
 
 #include "Components/playerComponent.h"
 #include "Components/RenderComponents/spriteComponent.h"

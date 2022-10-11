@@ -190,6 +190,7 @@
     <ClCompile Include="Renderer\font.cpp" />
     <ClCompile Include="Renderer\model.cpp" />
     <ClCompile Include="Renderer\renderer.cpp" />
+    <ClCompile Include="Renderer\shader.cpp" />
     <ClCompile Include="Renderer\text.cpp" />
     <ClCompile Include="Renderer\texture.cpp" />
     <ClCompile Include="Resource\resourceManager.cpp" />
@@ -242,6 +243,7 @@
     <ClInclude Include="Renderer\font.h" />
     <ClInclude Include="Renderer\model.h" />
     <ClInclude Include="Renderer\renderer.h" />
+    <ClInclude Include="Renderer\shader.h" />
     <ClInclude Include="Renderer\text.h" />
     <ClInclude Include="Renderer\texture.h" />
     <ClInclude Include="Resource\resource.h" />
