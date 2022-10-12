@@ -47,7 +47,6 @@
 #include <memory>
 #include <vector>
 #include <variant>
-#include <glm/glm.hpp>
 
 
 namespace vl

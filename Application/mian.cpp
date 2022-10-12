@@ -11,7 +11,7 @@ float points[] = {
    -0.5f, 0.5f,  0.0f
 };
 
-vl::Vector3 colors[] = {
+glm::vec3 colors[] = {
 	{1, 0, 0},
 	{0, 1, 0},
 	{0, 0, 1},
@@ -39,7 +39,7 @@ int main(int argc, char** argv)
 	GLuint cvbo = 0;
 	glGenBuffers(1, &cvbo);
 	glBindBuffer(GL_ARRAY_BUFFER, cvbo);
-	glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(vl::Vector3), colors, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(glm::vec3), colors, GL_STATIC_DRAW);
 
 	// create vertex array
 	GLuint vao = 0;
@@ -72,12 +72,25 @@ int main(int argc, char** argv)
 	glLinkProgram(program);
 	glUseProgram(program);
 
+	GLint uniform1 = glGetUniformLocation(program, "scale");
+	GLint uniform2 = glGetUniformLocation(program, "tint");
+	GLint uniform3 = glGetUniformLocation(program, "transform");
+
+	glUniform3f(uniform2, 1, 1, 1);
+	
+
+	glm::mat4 mx{ 1 };
+
 	bool quit = false;
 	while (!quit)
 	{
 		vl::Engine::Instance().Update();
 
 		if (vl::g_inputSystem.GetKeyDown(vl::key_escape)) { quit = true; }
+
+		glUniform1f(uniform1, std::sin(vl::g_time.time));
+		mx = glm::eulerAngleXYZ(0.0f, 0.0f, (float)std::sin(vl::g_time.time));
+		glUniformMatrix4fv(uniform3, 1, GL_FALSE, glm::value_ptr(mx));
 
 		vl::g_renderer.BeginFrame();
 
