@@ -1,7 +1,7 @@
 #version 430 core 
 
-in vec3 vPosition; // 0
-in vec3 vColor; // 1
+in layout(location = 0) vec3 vPosition;
+in layout(location = 1) vec3 vColor;
 
 out vec3 color;
 
