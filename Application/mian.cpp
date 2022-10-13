@@ -20,15 +20,27 @@ glm::vec3 colors[] = {
 	{1, 1, 1}
 };
 
+glm::vec2 UVcoords[] = {
+	{ 1, 0 },
+	{ 1, 1 },
+	{ 0, 0 },
+	{ 1, 0 },
+	{ 0, 1 },
+	{ 0, 0 }
+};
+
 int main(int argc, char** argv)
 {
+	LOG("Application Started...");
 	vl::InitializeMemory();
 	vl::SetFilePath("../Assets");
 
 	vl::Engine::Instance().Initialize();
 	vl::Engine::Instance().Register();
+	LOG("Engine Initialized...");
 
 	vl::g_renderer.CreateWindow("Application", 800, 600);
+	LOG("Window Initialized...");
 
 	// create vertex buffer (will probably move later)
 	GLuint pvbo = 0;
@@ -40,6 +52,11 @@ int main(int argc, char** argv)
 	glGenBuffers(1, &cvbo);
 	glBindBuffer(GL_ARRAY_BUFFER, cvbo);
 	glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(glm::vec3), colors, GL_STATIC_DRAW);
+
+	GLuint tvbo = 0;
+	glGenBuffers(1, &tvbo);
+	glBindBuffer(GL_ARRAY_BUFFER, tvbo);
+	glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(glm::vec2), UVcoords, GL_STATIC_DRAW);
 
 	// create vertex array
 	GLuint vao = 0;
@@ -54,16 +71,13 @@ int main(int argc, char** argv)
 	glBindBuffer(GL_ARRAY_BUFFER, cvbo);
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, NULL);
 
+	glEnableVertexAttribArray(2);
+	glBindBuffer(GL_ARRAY_BUFFER, tvbo);
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, NULL);
+
 	// create shader
 	std::shared_ptr<vl::Shader> vs = vl::g_resourceManager.Get<vl::Shader>("Shaders/basic.vert", GL_VERTEX_SHADER);
 	std::shared_ptr<vl::Shader> fs = vl::g_resourceManager.Get<vl::Shader>("Shaders/basic.frag", GL_FRAGMENT_SHADER);
-
-	//GLuint vs = glCreateShader(GL_VERTEX_SHADER);
-	//glShaderSource(vs, 1, &vertex_shader, NULL);
-	//glCompileShader(vs);
-	//GLuint fs = glCreateShader(GL_FRAGMENT_SHADER);
-	//glShaderSource(fs, 1, &fragment_shader, NULL);
-	//glCompileShader(fs);
 
 	// create program
 	GLuint program = glCreateProgram();
@@ -71,6 +85,11 @@ int main(int argc, char** argv)
 	glAttachShader(program, fs->m_shader);
 	glLinkProgram(program);
 	glUseProgram(program);
+
+	// create texture
+	std::shared_ptr<vl::Texture> texture1 = vl::g_resourceManager.Get<vl::Texture>("Textures/llama.png");
+	std::shared_ptr<vl::Texture> texture2 = vl::g_resourceManager.Get<vl::Texture>("Textures/crate.png");
+	texture2->Bind();
 
 	GLint uniform1 = glGetUniformLocation(program, "scale");
 	GLint uniform2 = glGetUniformLocation(program, "tint");
