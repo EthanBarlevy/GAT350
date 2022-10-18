@@ -42,6 +42,8 @@ namespace vl
 			AddShader(fshader);
 		}
 
+		Link();
+
 		return true;
 	}
 
