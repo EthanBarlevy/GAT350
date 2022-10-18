@@ -60,7 +60,7 @@ namespace vl
 
 		// check program link status
 		GLint status;
-		glGetProgramiv(m_program, GL_INFO_LOG_LENGTH, &status);
+		glGetProgramiv(m_program, GL_LINK_STATUS, &status);
 		if (status == GL_FALSE)
 		{
 			GLint length = 0;
