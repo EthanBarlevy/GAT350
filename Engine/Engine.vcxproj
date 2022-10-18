@@ -188,7 +188,9 @@
     <ClCompile Include="Physics\contactListener.cpp" />
     <ClCompile Include="Physics\physicsSystem.cpp" />
     <ClCompile Include="Renderer\font.cpp" />
+    <ClCompile Include="Renderer\material.cpp" />
     <ClCompile Include="Renderer\model.cpp" />
+    <ClCompile Include="Renderer\program.cpp" />
     <ClCompile Include="Renderer\renderer.cpp" />
     <ClCompile Include="Renderer\shader.cpp" />
     <ClCompile Include="Renderer\text.cpp" />
@@ -241,7 +243,9 @@
     <ClInclude Include="Physics\contactListener.h" />
     <ClInclude Include="Physics\physicsSystem.h" />
     <ClInclude Include="Renderer\font.h" />
+    <ClInclude Include="Renderer\material.h" />
     <ClInclude Include="Renderer\model.h" />
+    <ClInclude Include="Renderer\program.h" />
     <ClInclude Include="Renderer\renderer.h" />
     <ClInclude Include="Renderer\shader.h" />
     <ClInclude Include="Renderer\text.h" />

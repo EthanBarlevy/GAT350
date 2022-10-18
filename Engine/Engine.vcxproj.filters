@@ -177,6 +177,12 @@
     <ClCompile Include="Renderer\shader.cpp">
       <Filter>Source Files\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="Renderer\program.cpp">
+      <Filter>Source Files\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer\material.cpp">
+      <Filter>Source Files\Renderer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Math\mathUtils.h">
@@ -336,6 +342,12 @@
       <Filter>Source Files\Components</Filter>
     </ClInclude>
     <ClInclude Include="Renderer\shader.h">
+      <Filter>Source Files\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer\program.h">
+      <Filter>Source Files\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer\material.h">
       <Filter>Source Files\Renderer</Filter>
     </ClInclude>
   </ItemGroup>

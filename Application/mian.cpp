@@ -75,29 +75,10 @@ int main(int argc, char** argv)
 	glBindBuffer(GL_ARRAY_BUFFER, tvbo);
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, NULL);
 
-	// create shader
-	std::shared_ptr<vl::Shader> vs = vl::g_resourceManager.Get<vl::Shader>("Shaders/basic.vert", GL_VERTEX_SHADER);
-	std::shared_ptr<vl::Shader> fs = vl::g_resourceManager.Get<vl::Shader>("Shaders/basic.frag", GL_FRAGMENT_SHADER);
-
-	// create program
-	GLuint program = glCreateProgram();
-	glAttachShader(program, vs->m_shader);
-	glAttachShader(program, fs->m_shader);
-	glLinkProgram(program);
-	glUseProgram(program);
-
-	// create texture
-	std::shared_ptr<vl::Texture> texture1 = vl::g_resourceManager.Get<vl::Texture>("Textures/llama.png");
-	std::shared_ptr<vl::Texture> texture2 = vl::g_resourceManager.Get<vl::Texture>("Textures/crate.png");
-	texture2->Bind();
-
-	GLint uniform1 = glGetUniformLocation(program, "scale");
-	GLint uniform2 = glGetUniformLocation(program, "tint");
-	GLint uniform3 = glGetUniformLocation(program, "transform");
-
-	glUniform3f(uniform2, 1, 1, 1);
+	// create material
+	std::shared_ptr<vl::Material> material = vl::g_resourceManager.Get<vl::Material>("materials/box.mtrl");
+	material->Bind();
 	
-
 	glm::mat4 mx{ 1 };
 
 	bool quit = false;
@@ -106,10 +87,8 @@ int main(int argc, char** argv)
 		vl::Engine::Instance().Update();
 
 		if (vl::g_inputSystem.GetKeyDown(vl::key_escape)) { quit = true; }
-
-		glUniform1f(uniform1, std::sin(vl::g_time.time));
+		
 		mx = glm::eulerAngleXYZ(0.0f, 0.0f, (float)std::sin(vl::g_time.time));
-		glUniformMatrix4fv(uniform3, 1, GL_FALSE, glm::value_ptr(mx));
 
 		vl::g_renderer.BeginFrame();
 

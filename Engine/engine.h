@@ -30,6 +30,8 @@
 #include "Renderer/text.h"
 #include "Renderer/texture.h"
 #include "Renderer/shader.h"
+#include "Renderer/program.h"
+#include "Renderer/material.h"
 
 #include "Components/playerComponent.h"
 #include "Components/RenderComponents/spriteComponent.h"
