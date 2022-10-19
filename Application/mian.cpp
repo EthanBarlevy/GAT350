@@ -107,11 +107,11 @@ int main(int argc, char** argv)
 		}
 		if (vl::g_inputSystem.GetKeyState(vl::key_up) == vl::g_inputSystem.Held)
 		{
-			cameraPosition += glm::vec3{ 0, 1 * (float)vl::g_time.deltaTime, 0 };
+			cameraPosition += glm::vec3{ 0, -1 * (float)vl::g_time.deltaTime, 0 };
 		}
 		if (vl::g_inputSystem.GetKeyState(vl::key_down) == vl::g_inputSystem.Held)
 		{
-			cameraPosition += glm::vec3{ 0, -1 * (float)vl::g_time.deltaTime, 0 };
+			cameraPosition += glm::vec3{ 0, 1 * (float)vl::g_time.deltaTime, 0 };
 		}
 
 		glm::mat4 view = glm::lookAt(cameraPosition, cameraPosition + glm::vec3{ 0, 0, -1 }, glm::vec3{ 0, 1, 0 });
