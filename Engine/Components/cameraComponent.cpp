@@ -8,20 +8,20 @@ void vl::CameraComponent::Initialize()
 
 void vl::CameraComponent::Update()
 {
-    Matrix3x3 mxTranslation = Matrix3x3::CreateTranslation({ -m_owner->GetTransform().position.x, -m_owner->GetTransform().position.y + 100 });
-    Matrix3x3 mxRotation = Matrix3x3::CreateRotation(-m_owner->GetTransform().rotation);
+    //Matrix3x3 mxTranslation = Matrix3x3::CreateTranslation({ -m_owner->GetTransform().position.x, -m_owner->GetTransform().position.y + 100 });
+    //Matrix3x3 mxRotation = Matrix3x3::CreateRotation(-m_owner->GetTransform().rotation);
 
-    m_view = mxTranslation * mxRotation;
+    //m_view = mxTranslation * mxRotation;
 
-    g_renderer.SetViewMatrix(m_view);
+    //g_renderer.SetViewMatrix(m_view);
 }
 
 void vl::CameraComponent::SetViewport(const Vector2& size)
 {
-    Matrix3x3 mxTranslation = Matrix3x3::CreateTranslation(size * 0.5f);
+    /*Matrix3x3 mxTranslation = Matrix3x3::CreateTranslation(size * 0.5f);
 
     m_viewport = mxTranslation;
-    g_renderer.SetViewportMatrix(m_viewport);
+    g_renderer.SetViewportMatrix(m_viewport);*/
 }
 
 bool vl::CameraComponent::Write(const rapidjson::Value& value) const

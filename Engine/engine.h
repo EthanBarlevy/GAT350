@@ -32,6 +32,7 @@
 #include "Renderer/shader.h"
 #include "Renderer/program.h"
 #include "Renderer/material.h"
+#include "Renderer/vertexBuffer.h"
 
 #include "Components/playerComponent.h"
 #include "Components/RenderComponents/spriteComponent.h"

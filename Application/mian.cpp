@@ -59,27 +59,12 @@ int main(int argc, char** argv)
 	vl::g_renderer.CreateWindow("Application", 800, 600);
 	LOG("Window Initialized...");
 
-	// create vertex buffer (will probably move later)
-	GLuint vbo = 0;
-	glGenBuffers(1, &vbo);
-	glBindBuffer(GL_ARRAY_BUFFER, vbo);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-	// create vertex array
-	GLuint vao = 0;
-	glGenVertexArrays(1, &vao);
-	glBindVertexArray(vao);
-
-	glBindBuffer(GL_ARRAY_BUFFER, vbo);
-
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
-
-	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
-
-	glEnableVertexAttribArray(2);
-	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+	// create vertex buffer
+	std::shared_ptr<vl::VertexBuffer> vb = vl::g_resourceManager.Get<vl::VertexBuffer>("box");
+	vb->CreateVertexBuffer(sizeof(vertices), 36, vertices);
+	vb->SetAttribute(0, 3, 8 * sizeof(float), 0);
+	vb->SetAttribute(1, 3, 8 * sizeof(float), 3 * sizeof(float));
+	vb->SetAttribute(2, 2, 8 * sizeof(float), 6 * sizeof(float));
 
 	// create material
 	std::shared_ptr<vl::Material> material = vl::g_resourceManager.Get<vl::Material>("materials/box.mtrl");
@@ -99,30 +84,38 @@ int main(int argc, char** argv)
 		// add input to move camera
 		if (vl::g_inputSystem.GetKeyState(vl::key_left) == vl::g_inputSystem.Held)
 		{
-			cameraPosition += glm::vec3{1 * (float)vl::g_time.deltaTime, 0, 0};
+			cameraPosition += glm::vec3{ -1 * (float)vl::g_time.deltaTime, 0, 0};
 		}
 		if (vl::g_inputSystem.GetKeyState(vl::key_right) == vl::g_inputSystem.Held)
 		{
-			cameraPosition += glm::vec3{ -1 * (float)vl::g_time.deltaTime, 0, 0 };
+			cameraPosition += glm::vec3{ 1 * (float)vl::g_time.deltaTime, 0, 0 };
 		}
 		if (vl::g_inputSystem.GetKeyState(vl::key_up) == vl::g_inputSystem.Held)
 		{
-			cameraPosition += glm::vec3{ 0, -1 * (float)vl::g_time.deltaTime, 0 };
+			cameraPosition += glm::vec3{ 0, 1 * (float)vl::g_time.deltaTime, 0 };
 		}
 		if (vl::g_inputSystem.GetKeyState(vl::key_down) == vl::g_inputSystem.Held)
 		{
-			cameraPosition += glm::vec3{ 0, 1 * (float)vl::g_time.deltaTime, 0 };
+			cameraPosition += glm::vec3{ 0, -1 * (float)vl::g_time.deltaTime, 0 };
+		}
+		if (vl::g_inputSystem.GetKeyState(vl::key_pUp) == vl::g_inputSystem.Held)
+		{
+			cameraPosition += glm::vec3{ 0, 0, -1 * (float)vl::g_time.deltaTime };
+		}
+		if (vl::g_inputSystem.GetKeyState(vl::key_pDn) == vl::g_inputSystem.Held)
+		{
+			cameraPosition += glm::vec3{ 0, 0, 1 * (float)vl::g_time.deltaTime };
 		}
 
 		glm::mat4 view = glm::lookAt(cameraPosition, cameraPosition + glm::vec3{ 0, 0, -1 }, glm::vec3{ 0, 1, 0 });
-		//model = glm::eulerAngleXYZ(0.0f, (float)std::sin(vl::g_time.time), 0.0f);
+		model = glm::eulerAngleXYZ(0.0f, (float)(vl::g_time.time), 0.0f);
 		glm::mat4 mvp = projection * view * model;
 
 		material->GetProgram()->SetUniform("mvp", mvp);
 
 		vl::g_renderer.BeginFrame();
 
-		glDrawArrays(GL_TRIANGLES, 0, 36);
+		vb->Draw();
 
 		vl::g_renderer.EndFrame();
 	}

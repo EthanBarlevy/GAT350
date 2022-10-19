@@ -27,18 +27,18 @@ namespace vl
 
 	void RBPhysicsComponent::Initialize()
 	{
-		m_body = g_physicsSystem.CreateBody(m_owner->GetTransform().position, m_owner->GetTransform().rotation, data);
+		//m_body = g_physicsSystem.CreateBody(m_owner->GetTransform().position, m_owner->GetTransform().rotation, data);
 		m_body->SetGravityScale(data.gravity_scale);
 		m_body->SetLinearDamping(damping);
 	}
 
 	void RBPhysicsComponent::Update()
 	{
-		Vector2 position = B2VEC2_TO_VECTOR2(m_body->GetPosition());
-		m_owner->GetTransform().position = PhysicsSystem::WorldToScreen(position);
-		m_owner->GetTransform().rotation = math::RadToDeg(m_body->GetAngle());
+		//Vector2 position = B2VEC2_TO_VECTOR2(m_body->GetPosition());
+		//m_owner->GetTransform().position = PhysicsSystem::WorldToScreen(position);
+		//m_owner->GetTransform().rotation = math::RadToDeg(m_body->GetAngle());
 
-		velocity = B2VEC2_TO_VECTOR2(m_body->GetLinearVelocity());
+		//velocity = B2VEC2_TO_VECTOR2(m_body->GetLinearVelocity());
 	}
 
 	void RBPhysicsComponent::ApplyForce(const Vector2& force)

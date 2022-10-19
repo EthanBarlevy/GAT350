@@ -1,6 +1,4 @@
 #pragma once
-#include "vector2.h"
-#include "matrix3x3.h"
 #include "mathUtils.h"
 #include "Serialization/serializable.h"
 
@@ -8,42 +6,40 @@ namespace vl
 {
 	struct Transform : public ISerializable
 	{
-		Vector2 position;
-		float rotation{ 0 };
-		Vector2 scale{ 1, 1 };
+		glm::vec3 position{ 0 };
+		glm::vec3 rotation{ 0 };
+		glm::vec3 scale{ 1 };
 
-		Matrix3x3 matrix;
+		glm::mat4 matrix;
+
+		Transform() = default;
+		Transform(const glm::vec3& pos, const glm::vec3& rot = { 0, 0, 0 }, const glm::vec3& scl = { 1, 1, 1 })
+		{
+			position = pos;
+			rotation = rot;
+			scale = scl;
+		}
 
 		virtual bool Write(const rapidjson::Value& value) const override;
 		virtual bool Read(const rapidjson::Value& value) override;
 
 		void Update()
 		{
-			Matrix3x3 mxS = Matrix3x3::CreateScale(scale);
-			Matrix3x3 mxR = Matrix3x3::CreateRotation(math::DegToRad(rotation));
-			Matrix3x3 mxT = Matrix3x3::CreateTranslation(position);
-
-			matrix = { mxT * mxR * mxS };
+			matrix = *this;
 		}
 
-		void Update(const Matrix3x3& parent)
+		void Update(const glm::mat4& parent)
 		{
-			Matrix3x3 mxS = Matrix3x3::CreateScale(scale);
-			Matrix3x3 mxR = Matrix3x3::CreateRotation(math::DegToRad(rotation));
-			Matrix3x3 mxT = Matrix3x3::CreateTranslation(position);
-
-			matrix = { mxT * mxR * mxS };
-			matrix = parent * matrix;
+			matrix = parent * (glm::mat4)*this;
 		}
 
-		operator Matrix3x3 () const
+		operator glm::mat4 () const
 		{
-			Matrix3x3 mxS = Matrix3x3::CreateScale(scale);
-			Matrix3x3 mxR = Matrix3x3::CreateRotation(math::DegToRad(rotation));
-			Matrix3x3 mxT = Matrix3x3::CreateTranslation(position);
+			glm::mat4 mxS = glm::scale(scale);
+			glm::mat4 mxR = glm::eulerAngleXYZ(glm::radians(rotation.x), glm::radians(rotation.y), glm::radians(rotation.z));
+			glm::mat4 mxT = glm::translate(position);
 
 			return { mxT * mxR * mxS };
 		}
-
 	};
 }

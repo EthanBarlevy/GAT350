@@ -37,16 +37,17 @@ namespace vl
 	}
 	void Model::Draw(Renderer& renderer, const Transform& transform)
 	{
-		Matrix3x3 mx = transform.matrix;
-		//if (!m_points.size()) return;
+		
+		////Matrix3x3 mx = transform.matrix;
+		////if (!m_points.size()) return;
 
-		for (int i = 0; i < m_points.size(); i++)
-		{
-			vl::Vector2 p1 = mx * m_points[i];
-			vl::Vector2 p2 = mx * m_points[(i + 1) % m_points.size()];
+		//for (int i = 0; i < m_points.size(); i++)
+		//{
+		//	vl::Vector2 p1 = mx * m_points[i];
+		//	vl::Vector2 p2 = mx * m_points[(i + 1) % m_points.size()];
 
-			renderer.DrawLine(p1, p2, m_color);
-		}
+		//	renderer.DrawLine(p1, p2, m_color);
+		//}
 	}
 	bool Model::Load(const std::string& filename)
 	{

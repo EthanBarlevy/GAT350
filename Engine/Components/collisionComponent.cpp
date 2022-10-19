@@ -38,7 +38,7 @@ namespace vl
                 }
             }
 
-            data.size *= scale_offset * m_owner->GetTransform().scale;
+            //data.size *= scale_offset * m_owner->GetTransform().scale;
 
             if (component->m_body->GetType() == b2_staticBody)
             {

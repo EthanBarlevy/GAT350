@@ -10,6 +10,8 @@ namespace vl
 	const uint32_t key_left = SDL_SCANCODE_LEFT;
 	const uint32_t key_right = SDL_SCANCODE_RIGHT;
 	const uint32_t key_escape = SDL_SCANCODE_ESCAPE;
+	const uint32_t key_pUp = SDL_SCANCODE_PAGEUP;
+	const uint32_t key_pDn = SDL_SCANCODE_PAGEDOWN;
 
 	const uint32_t button_left = 0;
 	const uint32_t button_middle = 1;

@@ -107,79 +107,79 @@ namespace vl
 
 	void Renderer::Draw(std::shared_ptr<Texture> texture, const Transform& transform, const Vector2& registration)
 	{
-		Vector2 size = texture->GetSize();
-		size *= transform.scale;
+		//Vector2 size = texture->GetSize();
+		////size *= transform.scale;
 
-		// setting the registration point (middle is default)
-		Vector2 origin = (size * registration);
-		Vector2 tposition = transform.position - origin;
+		//// setting the registration point (middle is default)
+		//Vector2 origin = (size * registration);
+		////Vector2 tposition = transform.position - origin;
 
-		SDL_Rect dest;
-		dest.x = (int)tposition.x;
-		dest.y = (int)tposition.y;
-		dest.w = (int)size.x;
-		dest.h = (int)size.y;
+		//SDL_Rect dest;
+		////dest.x = (int)tposition.x;
+		////dest.y = (int)tposition.y;
+		//dest.w = (int)size.x;
+		//dest.h = (int)size.y;
 
-		SDL_Point center{ (int)origin.x, (int)origin.y };
+		//SDL_Point center{ (int)origin.x, (int)origin.y };
 
-		//SDL_RenderCopyEx(m_renderer, texture->m_texture, nullptr, &dest, transform.rotation, &center, SDL_FLIP_NONE);
+		////SDL_RenderCopyEx(m_renderer, texture->m_texture, nullptr, &dest, transform.rotation, &center, SDL_FLIP_NONE);
 	}
 
 	void Renderer::Draw(std::shared_ptr<Texture> texture, const Rect& source, const Transform& transform, const Vector2& registration, bool fliph, const Vector2& paralax)
 	{
-		if (paralax == Vector2::ONE)
-		{
-			Matrix3x3 mx = m_viewport * m_view * transform.matrix;
+		//if (paralax == Vector2::ONE)
+		//{
+		//	//Matrix3x3 mx = m_viewport * m_view * transform.matrix;
 
-			Vector2 size = Vector2{ source.w, source.h };
-			size *= mx.GetScale();
+		//	Vector2 size = Vector2{ source.w, source.h };
+		//	size *= mx.GetScale();
 
-			// setting the registration point (middle is default)
-			Vector2 origin = (size * registration);
-			Vector2 tposition = mx.GetTranslation() - origin;
+		//	// setting the registration point (middle is default)
+		//	Vector2 origin = (size * registration);
+		//	Vector2 tposition = mx.GetTranslation() - origin;
 
-			SDL_Rect dest;
-			dest.x = (int)tposition.x;
-			dest.y = (int)tposition.y;
-			dest.w = (int)size.x;
-			dest.h = (int)size.y;
+		//	SDL_Rect dest;
+		//	dest.x = (int)tposition.x;
+		//	dest.y = (int)tposition.y;
+		//	dest.w = (int)size.x;
+		//	dest.h = (int)size.y;
 
-			SDL_Rect src;
-			src.x = source.x;
-			src.y = source.y;
-			src.w = source.w;
-			src.h = source.h;
+		//	SDL_Rect src;
+		//	src.x = source.x;
+		//	src.y = source.y;
+		//	src.w = source.w;
+		//	src.h = source.h;
 
-			SDL_Point center{ (int)origin.x, (int)origin.y };
+		//	SDL_Point center{ (int)origin.x, (int)origin.y };
 
-			SDL_RendererFlip flip = (fliph) ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE;
+		//	SDL_RendererFlip flip = (fliph) ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE;
 
-			//SDL_RenderCopyEx(m_renderer, texture->m_texture, &src, &dest, math::RadToDeg(mx.GetRotation()), &center, flip);
-		}
-		else 
-		{
-			Vector2 size = Vector2{ source.w, source.h };
-			size *= transform.scale;
+		//	//SDL_RenderCopyEx(m_renderer, texture->m_texture, &src, &dest, math::RadToDeg(mx.GetRotation()), &center, flip);
+		//}
+		//else 
+		//{
+		//	Vector2 size = Vector2{ source.w, source.h };
+		//	//size *= transform.scale;
 
-			Vector2 origin = (size * registration);
-			Vector2 tposition = transform.position - origin;
+		//	Vector2 origin = (size * registration);
+		//	//Vector2 tposition = transform.position - origin;
 
-			SDL_Rect dest;
-			dest.x = (int)tposition.x;
-			dest.y = (int)tposition.y;
-			dest.w = (int)size.x;
-			dest.h = (int)size.y;
+		//	SDL_Rect dest;
+		//	//dest.x = (int)tposition.x;
+		//	//dest.y = (int)tposition.y;
+		//	dest.w = (int)size.x;
+		//	dest.h = (int)size.y;
 
-			SDL_Rect src;
-			src.x = source.x;
-			src.y = source.y;
-			src.w = source.w;
-			src.h = source.h;
+		//	SDL_Rect src;
+		//	src.x = source.x;
+		//	src.y = source.y;
+		//	src.w = source.w;
+		//	src.h = source.h;
 
-			SDL_Point center{ (int)origin.x, (int)origin.y };
+		//	SDL_Point center{ (int)origin.x, (int)origin.y };
 
-			SDL_RendererFlip flip = (fliph) ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE;
-			//SDL_RenderCopyEx(m_renderer, texture->m_texture, &src, &dest, transform.rotation, &center, flip);
-		}
+		//	SDL_RendererFlip flip = (fliph) ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE;
+		//	//SDL_RenderCopyEx(m_renderer, texture->m_texture, &src, &dest, transform.rotation, &center, flip);
+		//}
 	}
 }

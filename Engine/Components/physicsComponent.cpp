@@ -19,10 +19,10 @@ namespace vl
 
 	void PhysicsComponent::Update()
 	{
-		velocity += acceleration * (float)g_time.deltaTime;
+		/*velocity += acceleration * (float)g_time.deltaTime;
 		m_owner->GetTransform().position += velocity * (float)g_time.deltaTime;
 		velocity *= damping;
 
-		acceleration = Vector2::ZERO;
+		acceleration = Vector2::ZERO;*/
 	}
 }

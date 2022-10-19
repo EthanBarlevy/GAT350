@@ -19,7 +19,7 @@ namespace vl
                 int x = i % num_columns;
                 int y = i / num_columns;
 
-                actor->GetTransform().position = m_owner->GetTransform().position + (Vector2{x, y} *size);
+                //actor->GetTransform().position = m_owner->GetTransform().position + (Vector2{x, y} *size);
                 m_owner->GetScene()->Add(std::move(actor));
             }
         }

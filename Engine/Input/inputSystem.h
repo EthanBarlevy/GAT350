@@ -50,6 +50,8 @@ namespace vl
 	};
 
 	extern const uint32_t key_space;
+	extern const uint32_t key_pUp;
+	extern const uint32_t key_pDn;
 	extern const uint32_t key_up;
 	extern const uint32_t key_down;
 	extern const uint32_t key_left;

@@ -195,6 +195,7 @@
     <ClCompile Include="Renderer\shader.cpp" />
     <ClCompile Include="Renderer\text.cpp" />
     <ClCompile Include="Renderer\texture.cpp" />
+    <ClCompile Include="Renderer\vertexBuffer.cpp" />
     <ClCompile Include="Resource\resourceManager.cpp" />
     <ClCompile Include="Serialization\json.cpp" />
   </ItemGroup>
@@ -250,6 +251,7 @@
     <ClInclude Include="Renderer\shader.h" />
     <ClInclude Include="Renderer\text.h" />
     <ClInclude Include="Renderer\texture.h" />
+    <ClInclude Include="Renderer\vertexBuffer.h" />
     <ClInclude Include="Resource\resource.h" />
     <ClInclude Include="Resource\resourceManager.h" />
     <ClInclude Include="Serialization\json.h" />
