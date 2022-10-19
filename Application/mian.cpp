@@ -88,7 +88,7 @@ int main(int argc, char** argv)
 	glm::mat4 model{ 1 };
 	glm::mat4 projection = glm::perspective(45.0f, vl::g_renderer.GetWidth() / (float)vl::g_renderer.GetHeight(), 0.01f, 100.0f);
 
-	glm::vec3 cameraPosition{ 0, 2, 2 };
+	glm::vec3 cameraPosition{ 0, 0, 2 };
 
 	bool quit = false;
 	while (!quit)
@@ -97,9 +97,25 @@ int main(int argc, char** argv)
 		if (vl::g_inputSystem.GetKeyDown(vl::key_escape)) { quit = true; }
 		
 		// add input to move camera
+		if (vl::g_inputSystem.GetKeyState(vl::key_left) == vl::g_inputSystem.Held)
+		{
+			cameraPosition += glm::vec3{1 * (float)vl::g_time.deltaTime, 0, 0};
+		}
+		if (vl::g_inputSystem.GetKeyState(vl::key_right) == vl::g_inputSystem.Held)
+		{
+			cameraPosition += glm::vec3{ -1 * (float)vl::g_time.deltaTime, 0, 0 };
+		}
+		if (vl::g_inputSystem.GetKeyState(vl::key_up) == vl::g_inputSystem.Held)
+		{
+			cameraPosition += glm::vec3{ 0, 1 * (float)vl::g_time.deltaTime, 0 };
+		}
+		if (vl::g_inputSystem.GetKeyState(vl::key_down) == vl::g_inputSystem.Held)
+		{
+			cameraPosition += glm::vec3{ 0, -1 * (float)vl::g_time.deltaTime, 0 };
+		}
 
-		glm::mat4 view = glm::lookAt(cameraPosition, glm::vec3{ 0, 0, 0 }, glm::vec3{ 0, 1, 0 });
-		model = glm::eulerAngleXYZ(0.0f, (float)std::sin(vl::g_time.time), 0.0f);
+		glm::mat4 view = glm::lookAt(cameraPosition, cameraPosition + glm::vec3{ 0, 0, -1 }, glm::vec3{ 0, 1, 0 });
+		//model = glm::eulerAngleXYZ(0.0f, (float)std::sin(vl::g_time.time), 0.0f);
 		glm::mat4 mvp = projection * view * model;
 
 		material->GetProgram()->SetUniform("mvp", mvp);

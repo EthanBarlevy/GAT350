@@ -7,7 +7,7 @@ in layout(location = 2) vec2 vCoords;
 out vec3 color;
 out vec2 coords;
 
-uniform float scale;
+uniform float scale = 1.0f;
 uniform mat4 mvp;
 
 void main()
@@ -15,6 +15,6 @@ void main()
 	color = vColor;
 	coords = vCoords;
 
-	vec4 tposition = mvp * vec4(vPosition, 1.0);
+	vec4 tposition = mvp * vec4(vPosition * scale, 1.0);
 	gl_Position = tposition;
 }
