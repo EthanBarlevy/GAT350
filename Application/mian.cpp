@@ -72,8 +72,16 @@ int main(int argc, char** argv)
 	
 	glm::mat4 model{ 1 };
 	glm::mat4 projection = glm::perspective(45.0f, vl::g_renderer.GetWidth() / (float)vl::g_renderer.GetHeight(), 0.01f, 100.0f);
-
 	glm::vec3 cameraPosition{ 0, 0, 2 };
+
+	std::vector<vl::Transform> transforms;
+	for (int i = 0; i < 100; i++)
+	{
+		glm::vec3 u = { vl::random(-10, 10) , vl::random(-10, 10) , vl::random(-10, 10) };
+		glm::vec3 w = { vl::random(-10, 10) , vl::random(-10, 10) , vl::random(-10, 10) };
+		glm::vec3 o = { 1 , 1 , 1 };
+		transforms.push_back(vl::Transform(u, w, o));
+	}
 
 	bool quit = false;
 	while (!quit)
@@ -115,7 +123,17 @@ int main(int argc, char** argv)
 
 		vl::g_renderer.BeginFrame();
 
-		vb->Draw();
+		for (int i = 0; i < transforms.size(); i++)
+		{
+			// update transform rotation
+			transforms[i].rotation += glm::vec3{0, 0.5, 0};
+
+			// create mvp matrix
+			glm::mat4 mvp = projection * view * (glm::mat4)transforms[i];
+			material->GetProgram()->SetUniform("mvp", mvp);
+
+			vb->Draw();	
+		}
 
 		vl::g_renderer.EndFrame();
 	}
