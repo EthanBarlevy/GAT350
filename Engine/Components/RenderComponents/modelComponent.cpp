@@ -25,7 +25,7 @@ namespace vl
 
 	void vl::ModelComponent::Draw(Renderer& renderer)
 	{
-		m_model->Draw(renderer, m_owner->GetTransform());
+		//m_model->Draw(renderer, m_owner->GetTransform());
 	}
 
 

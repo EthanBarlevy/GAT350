@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Serialization/json.h"
+#include "Renderer/model.h"
 
 #include "Core/memory.h"
 #include "Core/file.h"
@@ -25,7 +26,6 @@
 #include "Framework/EventManager.h"
 
 #include "Renderer/renderer.h"
-#include "Renderer/model.h"
 #include "Renderer/font.h"
 #include "Renderer/text.h"
 #include "Renderer/texture.h"

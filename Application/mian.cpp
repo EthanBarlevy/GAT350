@@ -59,29 +59,16 @@ int main(int argc, char** argv)
 	vl::g_renderer.CreateWindow("Application", 800, 600);
 	LOG("Window Initialized...");
 
-	// create vertex buffer
-	std::shared_ptr<vl::VertexBuffer> vb = vl::g_resourceManager.Get<vl::VertexBuffer>("box");
-	vb->CreateVertexBuffer(sizeof(vertices), 36, vertices);
-	vb->SetAttribute(0, 3, 8 * sizeof(float), 0);
-	vb->SetAttribute(1, 3, 8 * sizeof(float), 3 * sizeof(float));
-	vb->SetAttribute(2, 2, 8 * sizeof(float), 6 * sizeof(float));
+	// create model
+	auto m = vl::g_resourceManager.Get<vl::Model>("models/ogre.obj");
 
 	// create material
-	std::shared_ptr<vl::Material> material = vl::g_resourceManager.Get<vl::Material>("materials/box.mtrl");
+	std::shared_ptr<vl::Material> material = vl::g_resourceManager.Get<vl::Material>("materials/ogre.mtrl");
 	material->Bind();
 	
 	glm::mat4 model{ 1 };
 	glm::mat4 projection = glm::perspective(45.0f, vl::g_renderer.GetWidth() / (float)vl::g_renderer.GetHeight(), 0.01f, 100.0f);
 	glm::vec3 cameraPosition{ 0, 0, 2 };
-
-	std::vector<vl::Transform> transforms;
-	for (int i = 0; i < 500; i++)
-	{
-		glm::vec3 u = { vl::randomf(-20, 20) , vl::randomf(-20, 20) , vl::randomf(-20, 20) };
-		glm::vec3 w = { vl::randomf(360) , vl::randomf(360) , vl::randomf(360) };
-		glm::vec3 o = { 1 , 1 , 1 };
-		transforms.push_back(vl::Transform(u, w, o));
-	}
 
 	bool quit = false;
 	while (!quit)
@@ -116,21 +103,14 @@ int main(int argc, char** argv)
 		}
 
 		glm::mat4 view = glm::lookAt(cameraPosition, cameraPosition + glm::vec3{ 0, 0, -1 }, glm::vec3{ 0, 1, 0 });
-		//model = glm::eulerAngleXYZ(0.0f, (float)(vl::g_time.time), 0.0f);
+		model = glm::eulerAngleXYZ(0.0f, (float)(vl::g_time.time) / 2, 0.0f);
 
 		vl::g_renderer.BeginFrame();
 
-		for (size_t i = 0; i < transforms.size(); i++)
-		{
-			// update transform rotation
-			transforms[i].rotation += glm::vec3{0.5, 0.5, 0.5};
+		glm::mat4 mvp = projection * view * model;
+		material->GetProgram()->SetUniform("mvp", mvp);
 
-			// create mvp matrix
-			glm::mat4 mvp = projection * view * (glm::mat4)transforms[i];
-			material->GetProgram()->SetUniform("mvp", mvp);
-
-			vb->Draw();	
-		}
+		m->m_vertexBuffer.Draw();
 
 		vl::g_renderer.EndFrame();
 	}

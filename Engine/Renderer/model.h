@@ -1,36 +1,31 @@
 #pragma once
 #include "renderer.h"
-#include "Math/transform.h"
-#include "Resource/resource.h"
-#include <vector>
+#include "vertexBuffer.h"
+#include "Math/mathUtils.h"
+
+#include <assimp/Importer.hpp>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
 
 namespace vl 
 {
 	class Model : public Resource
 	{
 	public:
-		Model() = default;
-		Model(const std::vector<vl::Vector2>& points, const vl::Color& color) : m_points{ points }, m_color{ color } {}
-		~Model() = default;
+		struct vertex_t
+		{
+			glm::vec3 position;
+			glm::vec2 texcoord;
+		};
 
-		Model(const std::string& filename);
-
+	public:
 		bool Create(std::string filename, ...) override;
 
-		void Draw(Renderer& renderer, const Vector2& position, float angle, const Vector2& scale = Vector2{1, 1});
-		void Draw(Renderer& renderer, const Transform& transform);
-
-		bool Load(const std::string& filename);
-		float CalcRadius();
-
-		float GetRadius() { return m_radius; }
-
-		Color& GetColor() { return m_color; }
-
 	private:
-		Color m_color{0, 0, 0, 0};
-		std::vector<vl::Vector2> m_points;
+		void ProcessNode(aiNode* node, const aiScene* scene);
+		void ProcessMesh(aiMesh* mesh, const aiScene* scene);
 
-		float m_radius = 0;
+	public:
+		VertexBuffer m_vertexBuffer;
 	};
 }
