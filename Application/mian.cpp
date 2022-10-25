@@ -62,10 +62,10 @@ int main(int argc, char** argv)
 	// load scene
 	auto scene = std::make_unique<vl::Scene>();
 	rapidjson::Document document;
-	bool sucess = vl::json::Load("scenes/basic.scn", document);
+	bool sucess = vl::json::Load("scenes/basic_lit.scn", document);
 	if (!sucess)
 	{
-		LOG("error loading scene file %s", "scenes/basic.sln");
+		LOG("error loading scene file %s", "scenes/basic_lit.sln");
 	}
 	else
 	{
@@ -82,7 +82,7 @@ int main(int argc, char** argv)
 		auto actor = scene->GetActorFromName<vl::Actor>("Ogre");
 		if (actor)
 		{
-			actor->GetTransform().rotation.y += vl::g_time.deltaTime * 90.0f;
+			actor->GetTransform().rotation.y += (float)vl::g_time.deltaTime * 90.0f;
 		}
 
 		scene->Update();
