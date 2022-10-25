@@ -2,6 +2,7 @@
 #include "Math/vector2.h"
 #include "Math/color.h"
 #include "Math/matrix3x3.h"
+#include "Math/mathUtils.h"
 #include <glad/glad.h>
 #include <SDL.h>
 
