@@ -1,6 +1,7 @@
 #include "modelComponent.h"
 #include "Framework/actor.h"
 #include "Renderer/model.h"
+#include "Renderer/program.h"
 
 namespace vl
 {
@@ -12,9 +13,12 @@ namespace vl
 	bool ModelComponent::Read(const rapidjson::Value& value)
 	{
 		std::string model_name;
+		std::string material_name;
 		READ_DATA(value, model_name);
+		READ_DATA(value, material_name);
 
-		m_model = g_resourceManager.Get<Model>(model_name);
+		model = g_resourceManager.Get<Model>(model_name);
+		material = g_resourceManager.Get<Material>(material_name);
 		return true;
 	}
 	
@@ -25,7 +29,13 @@ namespace vl
 
 	void vl::ModelComponent::Draw(Renderer& renderer)
 	{
-		//m_model->Draw(renderer, m_owner->GetTransform());
+		material->Bind();
+		// set mvp
+		material->GetProgram()->SetUniform("model", (glm::mat4)m_owner->GetTransform());
+		material->GetProgram()->SetUniform("view", renderer.GetView());
+		material->GetProgram()->SetUniform("projection", renderer.GetProjection());
+
+		model->m_vertexBuffer.Draw();
 	}
 
 

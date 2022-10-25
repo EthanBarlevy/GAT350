@@ -1,5 +1,6 @@
 #pragma once
 #include "renderComponent.h"
+#include "Renderer/material.h"
 
 namespace vl
 {
@@ -18,7 +19,8 @@ namespace vl
 		virtual void Draw(Renderer& renderer) override;
 
 	public:
-		std::shared_ptr<Model> m_model;
+		std::shared_ptr<Model> model;
+		std::shared_ptr<Material> material;
 
 	};
 }

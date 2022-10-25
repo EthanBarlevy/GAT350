@@ -46,6 +46,7 @@
 #include "Components/collisionComponent.h"
 #include "Components/characterComponent.h"
 #include "Components/cameraComponent.h"
+#include "Components/cameraController.h"
 
 #include <memory>
 #include <vector>
