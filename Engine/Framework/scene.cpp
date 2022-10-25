@@ -1,6 +1,7 @@
 #include "scene.h"
 #include "factory.h"
 #include "Core/logger.h"
+#include "engine.h"
 #include <algorithm>
 
 namespace vl
@@ -33,6 +34,15 @@ namespace vl
 
 	void Scene::Draw(Renderer& renderer)
 	{
+		// get camera
+		auto camera = GetActorFromName<Actor>("Camera");
+		if (camera)
+		{
+			g_renderer.SetView(camera->GetComponent<CameraComponent>()->GetView());
+			g_renderer.SetProjection(camera->GetComponent<CameraComponent>()->GetProjection());
+		}
+
+		// draw actors
 		for (auto& actor : m_actors)
 		{
 			actor->Draw(renderer);

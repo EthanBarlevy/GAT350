@@ -69,8 +69,8 @@ int main(int argc, char** argv)
 	}
 	else
 	{
-		scene.Read(document);
-		scene.Initialize();
+		scene->Read(document);
+		scene->Initialize();
 	}
 
 	bool quit = false;
@@ -81,8 +81,11 @@ int main(int argc, char** argv)
 		
 		vl::g_renderer.BeginFrame();
 
+		scene->Draw(vl::g_renderer);
+
 		vl::g_renderer.EndFrame();
 	}
+	scene->RemoveAll();
 
 	vl::Engine::Instance().Shutdown();
 	return 0;
