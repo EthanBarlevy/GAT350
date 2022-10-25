@@ -79,6 +79,14 @@ int main(int argc, char** argv)
 		vl::Engine::Instance().Update();
 		if (vl::g_inputSystem.GetKeyDown(vl::key_escape)) { quit = true; }
 		
+		auto actor = scene->GetActorFromName<vl::Actor>("Ogre");
+		if (actor)
+		{
+			actor->GetTransform().rotation.y += vl::g_time.deltaTime * 90.0f;
+		}
+
+		scene->Update();
+
 		vl::g_renderer.BeginFrame();
 
 		scene->Draw(vl::g_renderer);
