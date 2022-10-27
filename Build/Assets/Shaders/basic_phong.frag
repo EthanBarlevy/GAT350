@@ -1,11 +1,10 @@
-#version 430 core 
+#version 430 core
 
-in layout(location = 0) vec3 vPosition;
-in layout(location = 1) vec2 vCoords;
-in layout(location = 2) vec3 vNormal;
+in vec2 coords;
+in vec3 position;
+in vec3 normal;
 
-out vec2 coords;
-out vec3 color;
+out vec4 fColor; // pixel color to draw
 
 struct Light
 {
@@ -22,26 +21,16 @@ struct Material
 
 uniform Light light;
 uniform Material material;
-uniform mat4 model;
-uniform mat4 view;
-uniform mat4 projection;
-
-uniform float scale = 1.0f;
+uniform sampler2D textureSampler;
 
 void main()
 {
-	coords = vCoords;
-
+	// Ambient
 	vec3 ambient = light.ambient * material.color;
-	
+
 	// Diffuse
-	// create mvp matrix
-	mat4 model_view = view * model;
-	// transform normals & positions to view space
-	vec3 normal = mat3(model_view) * vNormal;
-	vec4 position = model_view * vec4(vPosition, 1);
 	// calculate light direction (unit vector)
-	vec3 light_dir = normalize(vec3(light.position - position));
+	vec3 light_dir = normalize(vec3(light.position) - position);
 
 	// calculate light intensitly with dot product (normal * direction)
 	float intensity = max(dot(light_dir, normal), 0);
@@ -58,9 +47,7 @@ void main()
 		specular = light.color * material.color * intensity;
 	}
 
-
-	color = ambient + diffuse + specular;
-
-	mat4 mvp = projection * view * model;
-	gl_Position = mvp * vec4(vPosition * scale, 1.0);;
+	//color = ambient + diffuse + specular;
+	
+	fColor = vec4(ambient + diffuse, 1) * texture(textureSampler, coords) + vec4(specular, 1);
 }
