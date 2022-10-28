@@ -2,7 +2,7 @@
   "actors": [
     {
       "type": "Actor",
-      "name": "Ogre",
+      "name": "Rock",
       "transform": {
         "position": [
           0,
@@ -10,9 +10,9 @@
           0
         ],
         "scale": [
-          1,
-          1,
-          1
+          0.02,
+          0.02,
+          0.02
         ],
         "rotation": [
           0,
@@ -23,7 +23,35 @@
       "components": [
         {
           "type": "ModelComponent",
-          "model_name": "Models/ogre.obj",
+          "model_name": "Models/rock1/Rock_1.obj",
+          "material_name": "Materials/box.mtrl"
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "Dragon",
+      "transform": {
+        "position": [
+          0,
+          0,
+          -30
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "rotation": [
+          20,
+          37,
+          0
+        ]
+      },
+      "components": [
+        {
+          "type": "ModelComponent",
+          "model_name": "Models/dragon.obj",
           "material_name": "Materials/ogre.mtrl"
         }
       ]
@@ -33,10 +61,9 @@
       "name": "Light",
       "transform": {
         "position": [
-          2,
           0,
-          5
-
+          10,
+          -15
         ]
       },
       "components": [

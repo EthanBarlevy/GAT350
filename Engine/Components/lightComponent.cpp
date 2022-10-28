@@ -13,7 +13,7 @@ namespace vl
 		// set programs light properties
 		for (auto& program : programs)
 		{
-			program->SetUniform("light.ambient", glm::vec3( 0.3f ));
+			program->SetUniform("light.ambient", glm::vec3( 0.8f ));
 			program->SetUniform("light.color", color);
 			program->SetUniform("light.position", position);
 		}
