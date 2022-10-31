@@ -46,6 +46,9 @@ namespace vl
 
 	void VertexBuffer::Draw(GLenum primitiveType)
 	{
+		glBindVertexArray(m_vao);
+		glDrawArrays(primitiveType, 0, m_vertexCount);
+
 		if(m_ibo)
 		{
 			glDrawElements(primitiveType, m_indexCount, m_indexType, 0);

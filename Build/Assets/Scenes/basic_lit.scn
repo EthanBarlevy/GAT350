@@ -5,18 +5,46 @@
       "name": "Rock",
       "transform": {
         "position": [
-          0,
-          0,
+          1,
+          -0.5,
           0
         ],
         "scale": [
-          0.02,
-          0.02,
-          0.02
+          0.03,
+          0.03,
+          0.03
         ],
         "rotation": [
           0,
           0,
+          -45
+        ]
+      },
+      "components": [
+        {
+          "type": "ModelComponent",
+          "model_name": "Models/rock1/Rock_1.obj",
+          "material_name": "Materials/box.mtrl"
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "Rock2",
+      "transform": {
+        "position": [
+          0.4,
+          -0.55,
+          0
+        ],
+        "scale": [
+          0.0275,
+          0.0275,
+          0.0275
+        ],
+        "rotation": [
+          90,
+          180,
           0
         ]
       },
@@ -25,6 +53,62 @@
           "type": "ModelComponent",
           "model_name": "Models/rock1/Rock_1.obj",
           "material_name": "Materials/box.mtrl"
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "Ground",
+      "transform": {
+        "position": [
+          0,
+          -0.6,
+          -10
+        ],
+        "scale": [
+          30,
+          0,
+          70
+        ],
+        "rotation": [
+          3,
+          0,
+          0
+        ]
+      },
+      "components": [
+        {
+          "type": "ModelComponent",
+          "model_name": "Models/plane.obj",
+          "material_name": "Materials/ground.mtrl"
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "Sword",
+      "transform": {
+        "position": [
+          1,
+          -0.7,
+          0.6
+        ],
+        "scale": [
+          0.05,
+          0.05,
+          0.05
+        ],
+        "rotation": [
+          -20,
+          0,
+          45
+        ]
+      },
+      "components": [
+        {
+          "type": "ModelComponent",
+          "model_name": "Models/weapons/Artorias_Sword.obj",
+          "material_name": "Materials/sword.mtrl"
         }
       ]
     },

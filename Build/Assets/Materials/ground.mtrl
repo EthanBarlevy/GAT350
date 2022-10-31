@@ -1,6 +1,6 @@
 {
   "program": "shaders/basic_phong.prog",
-  "texture": "Models/rock1/Rock_1_Base_Color.jpg",
+  "texture": "textures/lava.png",
   "color": [
     1,
     1,
