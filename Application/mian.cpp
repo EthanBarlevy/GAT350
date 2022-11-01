@@ -62,7 +62,7 @@ int main(int argc, char** argv)
 	// load scene
 	auto scene = std::make_unique<vl::Scene>();
 	rapidjson::Document document;
-	bool sucess = vl::json::Load("scenes/basic_lit.scn", document);
+	bool sucess = vl::json::Load("scenes/texture.scn", document);
 	if (!sucess)
 	{
 		LOG("error loading scene file %s", "scenes/basic_lit.sln");
@@ -83,6 +83,13 @@ int main(int argc, char** argv)
 		if (actor)
 		{
 			//actor->GetTransform().rotation.y += (float)vl::g_time.deltaTime * 90.0f;
+		}
+
+		auto material = vl::g_resourceManager.Get<vl::Material>("Materials/multi.mtrl");
+		if (material)
+		{
+			//material->uv_offset.x += vl::g_time.deltaTime;
+			//material->uv_offset.y -= vl::g_time.deltaTime;
 		}
 
 		scene->Update();
