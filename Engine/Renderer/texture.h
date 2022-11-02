@@ -22,6 +22,7 @@ namespace vl
 		bool CreateFromSurface(SDL_Surface* surface, Renderer& renderer);
 		bool Load(const std::string& filename, Renderer& renderer);
 
+		void SetActive(GLuint uint) { glActiveTexture(uint); }
 		void Bind() { glBindTexture(m_target, m_texture); }
 
 		Vector2 GetSize() const;
@@ -33,7 +34,5 @@ namespace vl
 	private:
 		GLuint m_texture{ 0 };
 		GLenum m_target{ GL_TEXTURE_2D };
-		GLuint m_unit{ GL_TEXTURE0 };
-		//SDL_Texture* m_texture{ nullptr };
 	};
 }

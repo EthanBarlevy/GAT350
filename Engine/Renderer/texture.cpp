@@ -30,6 +30,7 @@ namespace vl
             LOG(SDL_GetError());
             return false;
         }
+        //FlipSurface(surface);
 
         // create texture
         glGenTextures(1, &m_texture);

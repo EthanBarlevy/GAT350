@@ -82,7 +82,7 @@ int main(int argc, char** argv)
 		auto actor = scene->GetActorFromName<vl::Actor>("Ogre");
 		if (actor)
 		{
-			//actor->GetTransform().rotation.y += (float)vl::g_time.deltaTime * 90.0f;
+			actor->GetTransform().rotation.y += (float)vl::g_time.deltaTime * 90.0f;
 		}
 
 		auto material = vl::g_resourceManager.Get<vl::Material>("Materials/multi.mtrl");

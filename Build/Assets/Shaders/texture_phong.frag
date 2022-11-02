@@ -24,7 +24,8 @@ struct Material
 uniform Light light;
 uniform Material material;
 
-uniform sampler2D texture1;
+layout (binding = 0) uniform sampler2D texture1; // diffuse
+layout (binding = 1) uniform sampler2D texture2; // specular
 
 void main()
 {
@@ -54,5 +55,8 @@ void main()
 	
 	vec2 tcoords = (coords * material.uv_tiling) + material.uv_offset;
 
-	fColor = vec4(ambient + diffuse, 1) * texture(texture1, tcoords) + vec4(specular, 1);
+	//vec4 tcolor = mix(texture(texture1, tcoords), texture(texture2, tcoords), 0.8);
+	vec4 tcolor = texture(texture1, tcoords);
+
+	fColor = vec4(ambient + diffuse, 1) * tcolor + vec4(specular, 1) * texture(texture2, tcoords);
 }
