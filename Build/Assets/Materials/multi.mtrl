@@ -1,14 +1,15 @@
 {
   "program": "shaders/texture_phong.prog",
   "textures": [
-    "textures/crate.bmp",
-    "textures/crate_specular.bmp"
+    "textures/lava-diffuse.png",
+    "textures/lava-specular.png",
+    "textures/lava-emissive.png"
   ],
-   "color" : [
-     1,
-     1,
-     1
-   ],
+  "color": [
+    0.5,
+    0.5,
+    0.5
+  ],
    "shininess" : 16,
    "uv_tiling" : [ 1, 1 ],
    "uv_offset" : [ 0, 0 ]

@@ -26,6 +26,7 @@ uniform Material material;
 
 layout (binding = 0) uniform sampler2D texture1; // diffuse
 layout (binding = 1) uniform sampler2D texture2; // specular
+layout (binding = 2) uniform sampler2D texture3; // emissive
 
 void main()
 {
@@ -58,5 +59,5 @@ void main()
 	//vec4 tcolor = mix(texture(texture1, tcoords), texture(texture2, tcoords), 0.8);
 	vec4 tcolor = texture(texture1, tcoords);
 
-	fColor = vec4(ambient + diffuse, 1) * tcolor + vec4(specular, 1) * texture(texture2, tcoords);
+	fColor = texture(texture3, tcoords) + vec4(ambient + diffuse, 1) * tcolor + vec4(specular, 1) * texture(texture2, tcoords);
 }
