@@ -8,6 +8,13 @@ namespace vl
 	public:
 		CLASS_CLONE(LightComponent)
 
+		enum Type
+		{
+			Point,
+			Directional,
+			Spot
+		};
+
 		void Update() override;
 
 		virtual bool Write(const rapidjson::Value& value) const override;
@@ -15,5 +22,8 @@ namespace vl
 
 	public:
 		glm::vec3 color{ 0 };
+		Type type = Type::Point;
+		float cutoff = 45.0f;
+		float exponent = 50.0f;
 	};
 }
