@@ -17,13 +17,13 @@ namespace vl
 		// set programs light properties
 		for (auto& program : programs)
 		{
-			program->SetUniform("light.type", (int)type);
+			//program->SetUniform("light.type", (int)type);
 			program->SetUniform("light.ambient", glm::vec3( 0.8f ));
 			program->SetUniform("light.color", color);
 			program->SetUniform("light.position", position);
-			program->SetUniform("light.direction", direction);
-			program->SetUniform("light.cutoff", glm::radians(cutoff));
-			program->SetUniform("light.exponent", exponent);
+			//program->SetUniform("light.direction", direction);
+			//program->SetUniform("light.cutoff", glm::radians(cutoff));
+			//program->SetUniform("light.exponent", exponent);
 		}
 	}
 

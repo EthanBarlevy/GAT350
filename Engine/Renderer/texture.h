@@ -25,6 +25,8 @@ namespace vl
 		void SetActive(GLuint uint) { glActiveTexture(uint); }
 		void Bind() { glBindTexture(m_target, m_texture); }
 
+		static GLenum GetInternalFormat(GLuint format);
+
 		Vector2 GetSize() const;
 
 		friend class Renderer;

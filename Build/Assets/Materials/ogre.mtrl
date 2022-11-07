@@ -1,8 +1,8 @@
 {
   "program": "shaders/normal_phong.prog",
   "textures": [
-    "textures/rocks.jpg",
-    "textures/rocks_normal.jpg"
+    "textures/ogre_diffuse.bmp",
+    "textures/ogre_normal.bmp"
   ],
    "color" : [
      1,

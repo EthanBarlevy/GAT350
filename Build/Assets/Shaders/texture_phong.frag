@@ -8,9 +8,13 @@ out vec4 fColor; // pixel color to draw
 
 struct Light
 {
+	int type;
 	vec3 ambient;
 	vec3 color;
 	vec4 position;
+	vec3 direction;
+	float cutoff;
+	float exponent;
 };
 
 struct Material
@@ -55,6 +59,22 @@ void phong(vec3 position, vec3 normal, out vec3 ambient, out vec3 diffuse, out v
 
 void main()
 {
+	// directional vector to light
+	//vec3 light_dir = (light.type == DIRECTIONAL) ? normalize(-light.direction) : normalize(vec3(light.position) - position);
+
+	// if spotlight, compute the intensity
+	float spot_intensity = 1;
+	//if(light.type == SPOTLIGHT)
+	{
+		// get cosine of light direction
+		//float cosine = dot(light.direction, -light_dir);
+		// get angle
+		//float angle = acos(cosine);
+
+		// if angle is less than cutoff then set to 0
+		//spot_intensity = (angle < light.cutoff) ? pow(cosine, light.exponent) : 0;
+	}
+
 	vec3 ambient, diffuse, specular;
 	
 	phong(position, normal, ambient, diffuse, specular);
