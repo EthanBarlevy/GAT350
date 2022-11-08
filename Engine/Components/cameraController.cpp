@@ -23,6 +23,14 @@ namespace vl
 		{
 			m_owner->GetTransform().position.y -= speed * (float)g_time.deltaTime;
 		}
+		if (g_inputSystem.GetKeyState(key_pUp) == InputSystem::Held)
+		{
+			m_owner->GetTransform().position.z -= speed * (float)g_time.deltaTime;
+		}
+		if (g_inputSystem.GetKeyState(key_pDn) == InputSystem::Held)
+		{
+			m_owner->GetTransform().position.z += speed * (float)g_time.deltaTime;
+		}
 	}
 
 	bool CameraController::Write(const rapidjson::Value& value) const

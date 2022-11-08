@@ -102,9 +102,8 @@ namespace vl
 
 	void Program::SetUniform(const std::string& name, bool value)
 	{
-		// i dont think that this one is possible
-		//GLint uniform = GetUniform(name);
-		//if (uniform != -1) { glUniform1b(uniform, value); }
+		GLint uniform = GetUniform(name);
+		if (uniform != -1) { glUniform1i(uniform, value); }
 	}
 
 	void Program::SetUniform(const std::string& name, const glm::vec2& value)

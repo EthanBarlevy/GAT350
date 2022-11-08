@@ -22,6 +22,15 @@
     <Filter Include="Resource Files\Materials">
       <UniqueIdentifier>{6fbb4fd4-3a20-4223-98db-64e96447bf92}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Shaders\FX">
+      <UniqueIdentifier>{c7f0c5d8-7801-45ed-bfb2-d69972bfb843}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Shaders\Unlit">
+      <UniqueIdentifier>{c28e2f20-7b11-4032-95e9-ee56f5d09ebf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Shaders\Lit">
+      <UniqueIdentifier>{0166b50d-80f2-4bd2-be8a-17000c17dcaf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Build\Assets\Shaders\basic.frag">

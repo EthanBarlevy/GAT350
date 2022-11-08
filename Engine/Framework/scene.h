@@ -1,6 +1,7 @@
 #pragma once
 #include "actor.h"
 #include "gameObject.h"
+#include "Resource/resource.h"
 #include <list>
 #include <memory>
 
@@ -11,7 +12,7 @@ namespace vl
 	class Renderer;
 	class Game;
 
-	class Scene : public GameObject, public ISerializable
+	class Scene : public GameObject, public ISerializable, public Resource
 	{
 	public:
 		Scene() = default;
@@ -20,6 +21,7 @@ namespace vl
 		~Scene() = default;
 
 		CLASS_CLONE(Scene);
+		virtual bool Create(std::string name, ...) override;
 
 		virtual bool Write(const rapidjson::Value& value) const override;
 		virtual bool Read(const rapidjson::Value& value) override;
@@ -46,6 +48,7 @@ namespace vl
 	private:
 		std::list<std::unique_ptr<Actor>> m_actors;
 		Game* m_game;
+
 	};
 
 	template<typename T>

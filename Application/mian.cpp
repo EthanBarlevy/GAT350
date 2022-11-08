@@ -44,7 +44,7 @@ int main(int argc, char** argv)
 		if (actor)
 		{
 			// move light using sin wave 
-			actor->GetTransform().position.x = std::sin(vl::g_time.time);
+			//actor->GetTransform().position.x = std::sin(vl::g_time.time);
 		}
 
 		auto material = vl::g_resourceManager.Get<vl::Material>("Materials/multi.mtrl");

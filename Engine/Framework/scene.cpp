@@ -61,6 +61,22 @@ namespace vl
 		m_actors.clear();
 	}
 
+	bool Scene::Create(std::string name, ...)
+	{
+		rapidjson::Document document;
+		bool sucess = vl::json::Load("scenes/texture.scn", document);
+		if (!sucess)
+		{
+			LOG("error loading scene file %s", "scenes/basic_lit.sln");
+		}
+		else
+		{
+			Read(document);
+			Initialize();
+		}
+		return true;
+	}
+
 	bool Scene::Write(const rapidjson::Value& value) const
 	{
 		return false; // im returning false because we are not implementing this
