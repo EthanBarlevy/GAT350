@@ -40,6 +40,13 @@ int main(int argc, char** argv)
 			//actor->GetTransform().rotation.y += (float)vl::g_time.deltaTime * 20.0f;
 		}
 
+		actor = scene->GetActorFromName<vl::Actor>("Light");
+		if (actor)
+		{
+			// move light using sin wave 
+			actor->GetTransform().position.x = std::sin(vl::g_time.time);
+		}
+
 		auto material = vl::g_resourceManager.Get<vl::Material>("Materials/multi.mtrl");
 		if (material)
 		{

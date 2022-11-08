@@ -51,9 +51,9 @@
             1,
             1
           ],
-          "type_name": "point",
+          "type_name": "Point",
           "cutoff": 45.0,
-          "exponent": 50.0
+          "exponent": 200.0
         }
       ]
     },
