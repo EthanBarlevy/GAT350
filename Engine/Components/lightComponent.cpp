@@ -18,7 +18,7 @@ namespace vl
 		for (auto& program : programs)
 		{
 			program->SetUniform("light.type", (int)type);
-			program->SetUniform("light.ambient", glm::vec3( 0.8f ));
+			program->SetUniform("light.ambient", glm::vec3( 0.2f ));
 			program->SetUniform("light.color", color);
 			program->SetUniform("light.position", position);
 			program->SetUniform("light.direction", direction);
