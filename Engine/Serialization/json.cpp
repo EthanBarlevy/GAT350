@@ -156,7 +156,7 @@ namespace vl::json
 
         for (rapidjson::SizeType i = 0; i < array.Size(); i++)
         {
-            if (!array[1].IsString())
+            if (!array[i].IsString())
             {
                 LOG("error reading json data (not a string) %s", name.c_str());
                 return false;
