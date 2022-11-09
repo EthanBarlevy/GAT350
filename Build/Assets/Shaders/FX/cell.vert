@@ -17,7 +17,7 @@ void main()
 	// create mvp matrix
 	mat4 model_view = view * model;
 	// pass data through
-	normal = mat3(model_view) * vNormal;
+	normal = normalize(mat3(model_view) * vNormal);
 	position = vec3(model_view * vec4(vPosition, 1));
 	coords = vCoords;
 

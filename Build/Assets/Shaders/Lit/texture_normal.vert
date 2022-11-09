@@ -27,7 +27,6 @@ void main()
 
 	position = vec3(model_view * vec4(vPosition, 1));
 	coords = vCoords;
-	
 
 	mat4 mvp = projection * view * model;
 	gl_Position = mvp * vec4(vPosition, 1.0);;

@@ -4,10 +4,9 @@
 #define DIRECTIONAL 1
 #define SPOTLIGHT   2
 
-
 in vec2 coords;
 in vec3 position;
-in vec3 normal;
+in mat3 tbn;
 
 out vec4 fColor; // pixel color to draw
 
@@ -31,8 +30,7 @@ uniform struct Material
 } material;
 
 layout (binding = 0) uniform sampler2D diffuse_map; // diffuse
-//layout (binding = 1) uniform sampler2D specular_map; // specular
-//layout (binding = 2) uniform sampler2D emissive_map; // emissive
+layout (binding = 1) uniform sampler2D normal_map; // normal
 
 void phong(vec3 position, vec3 normal, out vec3 ambient, out vec3 diffuse, out vec3 specular)
 {
@@ -75,12 +73,15 @@ void phong(vec3 position, vec3 normal, out vec3 ambient, out vec3 diffuse, out v
 void main()
 {
 	vec3 ambient, diffuse, specular;
-	
-	phong(position, normal, ambient, diffuse, specular);
-	
-	vec2 tcoords = (coords * material.uv_tiling) + material.uv_offset;
 
-	//vec4 tcolor = mix(texture(diffuse_map, tcoords), texture(specular_map, tcoords), 0.8);
+	vec2 tcoords = (coords * material.uv_tiling) + material.uv_offset;
+	
+	vec3 normal = texture(normal_map, tcoords).rgb;
+	normal = (normal * 2) - 1;
+	normal = normalize(tbn * normal);
+
+	phong(position, normal, ambient, diffuse, specular);
+
 	vec4 tcolor = texture(diffuse_map, tcoords);
 
 	fColor = vec4(ambient + diffuse, 1) * tcolor + vec4(specular, 1);
