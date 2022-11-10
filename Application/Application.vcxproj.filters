@@ -102,7 +102,7 @@
     <None Include="..\Build\Assets\Shaders\Lit\texture_normal.vert">
       <Filter>Resource Files\Shaders\Lit</Filter>
     </None>
-    <None Include="..\Build\Assets\Materials\owo.mtrl">
+    <None Include="..\Build\Assets\Materials\dolphin.mtrl">
       <Filter>Resource Files\Materials</Filter>
     </None>
     <None Include="..\Build\Assets\Shaders\Unlit\color.prog">

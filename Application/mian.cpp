@@ -13,25 +13,19 @@ int main(int argc, char** argv)
 
 	vl::g_renderer.CreateWindow("Application", 800, 600);
 	LOG("Window Initialized...");
+	vl::g_gui.Initialize(vl::g_renderer);
 
 	// load scene
-	auto scene = std::make_unique<vl::Scene>();
-	rapidjson::Document document;
-	bool sucess = vl::json::Load("scenes/texture.scn", document);
-	if (!sucess)
-	{
-		LOG("error loading scene file %s", "scenes/basic_lit.sln");
-	}
-	else
-	{
-		scene->Read(document);
-		scene->Initialize();
-	}
+	auto scene = vl::g_resourceManager.Get<vl::Scene>("scenes/texture.scn");
+
+	glm::vec3 pos{ 0 };
 
 	bool quit = false;
 	while (!quit)
 	{
 		vl::Engine::Instance().Update();
+		vl::g_gui.BeginFrame(vl::g_renderer);
+
 		if (vl::g_inputSystem.GetKeyDown(vl::key_escape)) { quit = true; }
 		
 		auto actor = scene->GetActorFromName<vl::Actor>("Ogre");
@@ -43,24 +37,23 @@ int main(int argc, char** argv)
 		actor = scene->GetActorFromName<vl::Actor>("Light");
 		if (actor)
 		{
-			// move light using sin wave 
-			actor->GetTransform().position.x = std::sin(vl::g_time.time) + 5;
+			actor->GetTransform().position = pos;
 		}
 
-		//auto material = vl::g_resourceManager.Get<vl::Material>("Materials/multi.mtrl");
-		//if (material)
-		{
-			//material->uv_offset.x += vl::g_time.deltaTime / 2;
-			//material->uv_offset.y -= vl::g_time.deltaTime;
-		}
+		ImGui::Begin("hello");
+		ImGui::Button("Press");
+		ImGui::SliderFloat3("position", &pos[0], -3.0f, 3.0f);
+		ImGui::End();
 
 		scene->Update();
 
 		vl::g_renderer.BeginFrame();
 
 		scene->Draw(vl::g_renderer);
+		vl::g_gui.Draw();
 
 		vl::g_renderer.EndFrame();
+		vl::g_gui.EndFrame();
 	}
 	scene->RemoveAll();
 

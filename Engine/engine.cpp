@@ -9,6 +9,7 @@ namespace vl
 	ResourceManager g_resourceManager;
 	PhysicsSystem g_physicsSystem;
 	EventManager g_eventManager;
+	GUI g_gui;
 
 	void Engine::Initialize()
 	{
@@ -22,6 +23,7 @@ namespace vl
 
 	void Engine::Shutdown()
 	{
+		g_gui.Shutdown();
 		g_renderer.Shutodwn();
 		g_inputSystem.Shutdown();
 		g_audioSystem.Shutdown();
@@ -32,11 +34,18 @@ namespace vl
 
 	void Engine::Update()
 	{
+		SDL_Event event;
+		while (SDL_PollEvent(&event));
+		{
+			g_gui.Update(event);
+		}
+
 		g_time.Tick();
+		g_eventManager.Update();
+		g_physicsSystem.Update();
 		g_inputSystem.Update();
 		g_audioSystem.Update();
-		g_physicsSystem.Update();
-		g_eventManager.Update();
+		
 	}
 
 	void Engine::Register()
