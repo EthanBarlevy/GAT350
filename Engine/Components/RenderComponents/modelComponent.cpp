@@ -19,6 +19,9 @@ namespace vl
 
 		model = g_resourceManager.Get<Model>(model_name);
 		material = g_resourceManager.Get<Material>(material_name);
+
+		READ_DATA(value, depth_test);
+
 		return true;
 	}
 	
@@ -33,6 +36,7 @@ namespace vl
 		// set mvp
 		material->GetProgram()->SetUniform("model", (glm::mat4)m_owner->GetTransform());
 
+		glDepthMask(depth_test);
 		model->m_vertexBuffer.Draw();
 	}
 

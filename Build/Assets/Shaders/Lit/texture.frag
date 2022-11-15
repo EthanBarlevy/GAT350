@@ -79,6 +79,7 @@ void main()
 	{ 
 		vec3 diffuse; 
 		vec3 specular; 
+
 		phong(lights[i], position, normal, diffuse, specular); 
 		fColor += (vec4(diffuse, 1) * texture(diffuse_map, coords)) + vec4(specular, 1); 
 	}

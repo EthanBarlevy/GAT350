@@ -116,7 +116,7 @@ namespace vl
 	bool Scene::Create(std::string name, ...)
 	{
 		rapidjson::Document document;
-		bool sucess = vl::json::Load("scenes/texture.scn", document);
+		bool sucess = vl::json::Load(name, document);
 		if (!sucess)
 		{
 			LOG("error loading scene file %s", "scenes/basic_lit.sln");

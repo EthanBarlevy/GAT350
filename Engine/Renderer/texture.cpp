@@ -15,10 +15,10 @@ namespace vl
     {
         va_list args;
         va_start(args, name);
-        Renderer& renderer = va_arg(args, Renderer);
+
         va_end(args);
 
-        return Create(renderer, name);
+        return Load(name);
     }
 
     bool Texture::Create(Renderer& renderer, const std::string& filename)
@@ -69,7 +69,7 @@ namespace vl
 
     }
 
-    bool Texture::Load(const std::string& filename, Renderer& renderer)
+    bool Texture::Load(const std::string& filename)
     {
         // load surface
         SDL_Surface* surface = IMG_Load(filename.c_str());

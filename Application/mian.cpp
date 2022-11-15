@@ -16,7 +16,7 @@ int main(int argc, char** argv)
 	vl::g_gui.Initialize(vl::g_renderer);
 
 	// load scene
-	auto scene = vl::g_resourceManager.Get<vl::Scene>("scenes/texture.scn");
+	auto scene = vl::g_resourceManager.Get<vl::Scene>("scenes/cubemap.scn");
 
 	glm::vec3 pos{ 0 };
 

@@ -20,7 +20,8 @@ namespace vl
 		bool Create(std::string name, ...) override;
 		bool Create(Renderer& renderer, const std::string& filename);
 		bool CreateFromSurface(SDL_Surface* surface, Renderer& renderer);
-		bool Load(const std::string& filename, Renderer& renderer);
+
+		bool Load(const std::string& filename);
 
 		void SetActive(GLuint uint) { glActiveTexture(uint); }
 		void Bind() { glBindTexture(m_target, m_texture); }
@@ -30,10 +31,11 @@ namespace vl
 		Vector2 GetSize() const;
 
 		friend class Renderer;
-	private:
+
+	protected:
 		void FlipSurface(SDL_Surface* surface);
 
-	private:
+	protected:
 		GLuint m_texture{ 0 };
 		GLenum m_target{ GL_TEXTURE_2D };
 	};

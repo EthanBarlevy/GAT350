@@ -197,6 +197,7 @@
     <ClCompile Include="Math\vector2.cpp" />
     <ClCompile Include="Physics\contactListener.cpp" />
     <ClCompile Include="Physics\physicsSystem.cpp" />
+    <ClCompile Include="Renderer\cubemapTexture.cpp" />
     <ClCompile Include="Renderer\font.cpp" />
     <ClCompile Include="Renderer\GUI.cpp" />
     <ClCompile Include="Renderer\material.cpp" />
@@ -266,6 +267,7 @@
     <ClInclude Include="Physics\collision.h" />
     <ClInclude Include="Physics\contactListener.h" />
     <ClInclude Include="Physics\physicsSystem.h" />
+    <ClInclude Include="Renderer\cubemapTexture.h" />
     <ClInclude Include="Renderer\font.h" />
     <ClInclude Include="Renderer\GUI.h" />
     <ClInclude Include="Renderer\material.h" />

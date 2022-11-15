@@ -4,6 +4,18 @@
   "actors": [
     {
       "type": "Actor",
+      "name": "Skybox",
+      "components": [
+        {
+          "type": "ModelComponent",
+          "model_name": "Models/cube.obj",
+          "material_name": "Materials/skybox.mtrl",
+          "depth_test":  false
+        }
+      ]
+    },
+    {
+      "type": "Actor",
       "name": "Ogre",
       "transform": {
         "position": [
@@ -54,65 +66,6 @@
             0
           ],
           "type_name": "directional",
-          "cutoff": 25.0,
-          "exponent": 10.0
-        }
-      ]
-    },
-    {
-      "type": "Actor",
-      "name": "Light2",
-      "transform": {
-        "position": [
-          5,
-          0,
-          2
-        ],
-        "rotation": [
-          0,
-          0,
-          0
-        ]
-      },
-      "components": [
-        {
-          "type": "LightComponent",
-          "color": [
-            0,
-            1,
-            0
-          ],
-          "type_name": "point",
-          "cutoff": 25.0,
-          "exponent": 10.0
-        }
-      ]
-    },
-
-    {
-      "type": "Actor",
-      "name": "Light3",
-      "transform": {
-        "position": [
-          -5,
-          0,
-          2
-        ],
-        "rotation": [
-          0,
-          0,
-          0
-        ]
-      },
-      "components": [
-        {
-          "type": "LightComponent",
-          "color": [
-            0,
-            0,
-            1
-          ],
-          "type_name": "point",
           "cutoff": 25.0,
           "exponent": 10.0
         }
