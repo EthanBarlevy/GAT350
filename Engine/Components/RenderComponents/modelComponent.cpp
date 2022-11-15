@@ -32,8 +32,6 @@ namespace vl
 		material->Bind();
 		// set mvp
 		material->GetProgram()->SetUniform("model", (glm::mat4)m_owner->GetTransform());
-		material->GetProgram()->SetUniform("view", renderer.GetView());
-		material->GetProgram()->SetUniform("projection", renderer.GetProjection());
 
 		model->m_vertexBuffer.Draw();
 	}

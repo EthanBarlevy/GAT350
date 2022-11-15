@@ -1,5 +1,6 @@
 #pragma once
 #include "Framework/component.h"
+#include "renderer/program.h"
 
 namespace vl
 {
@@ -16,6 +17,8 @@ namespace vl
 		};
 
 		void Update() override;
+
+		void SetProgram(std::shared_ptr<Program> program, int index);
 
 		virtual bool Write(const rapidjson::Value& value) const override;
 		virtual bool Read(const rapidjson::Value& value) override;

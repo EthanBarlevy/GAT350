@@ -42,14 +42,16 @@ int main(int argc, char** argv)
 
 		ImGui::Begin("hello");
 		ImGui::Button("Press");
-		ImGui::SliderFloat3("position", &pos[0], -3.0f, 3.0f);
+		//ImGui::SliderFloat3("position", &pos[0], -3.0f, 3.0f);
 		ImGui::End();
 
 		scene->Update();
 
 		vl::g_renderer.BeginFrame();
 
-		scene->Draw(vl::g_renderer);
+		scene->PreRender(vl::g_renderer);
+		scene->Render(vl::g_renderer);
+
 		vl::g_gui.Draw();
 
 		vl::g_renderer.EndFrame();

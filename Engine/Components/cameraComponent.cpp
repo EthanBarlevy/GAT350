@@ -1,5 +1,6 @@
 #include "cameraComponent.h"
 #include "Framework/actor.h"
+#include "engine.h"
 
 void vl::CameraComponent::Initialize()
 {
@@ -14,6 +15,13 @@ void vl::CameraComponent::Update()
 void vl::CameraComponent::SetPerspective(float fov, float aspectRatio, float near, float far)
 {
     m_projection = glm::perspective(glm::radians(fov), aspectRatio, near, far);
+}
+
+void vl::CameraComponent::SetProgram(std::shared_ptr<Program> program)
+{
+    program->Use();
+    program->SetUniform("view", m_view);
+    program->SetUniform("projection", m_projection);
 }
 
 bool vl::CameraComponent::Write(const rapidjson::Value& value) const

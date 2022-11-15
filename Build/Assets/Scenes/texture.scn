@@ -1,4 +1,6 @@
 {
+  "clear_color": [ 0, 0, 0 ],
+  "ambient_color": [0.2, 0.2, 0.2],
   "actors": [
     {
       "type": "Actor",
@@ -34,11 +36,11 @@
       "transform": {
         "position": [
           0,
-          3,
-          1
+          0,
+          2
         ],
         "rotation": [
-          85,
+          90,
           0,
           0
         ]
@@ -48,8 +50,37 @@
           "type": "LightComponent",
           "color": [
             1,
+            0,
+            0
+          ],
+          "type_name": "directional",
+          "cutoff": 25.0,
+          "exponent": 10.0
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "Light2",
+      "transform": {
+        "position": [
+          5,
+          0,
+          2
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "components": [
+        {
+          "type": "LightComponent",
+          "color": [
+            0,
             1,
-            1
+            0
           ],
           "type_name": "point",
           "cutoff": 25.0,

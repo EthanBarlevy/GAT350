@@ -5,6 +5,7 @@
 #include <vector>
 
 #define READ_DATA(value, data) vl::json::Get(value, #data, data)
+#define READ_NAME_DATA(value, name, data) vl::json::Get(value, name, data)
 
 namespace vl
 {

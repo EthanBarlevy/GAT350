@@ -28,7 +28,9 @@ namespace vl
 
 		void Initialize() override;
 		void Update() override;
-		void Draw(Renderer& renderer);
+
+		void PreRender(Renderer& renderer);
+		void Render(Renderer& renderer);
 
 		void Add(std::unique_ptr<Actor> actor);
 		void RemoveAll();

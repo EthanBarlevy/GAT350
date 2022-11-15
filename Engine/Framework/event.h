@@ -1,6 +1,7 @@
 #pragma once
 #include <functional>
 #include <variant>
+#include <string>
 
 namespace vl
 {
