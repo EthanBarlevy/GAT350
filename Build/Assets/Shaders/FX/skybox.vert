@@ -11,6 +11,6 @@ void main()
 {
 	texcoord = vposition;
 
-	mat4 vp = projection * view;
+	mat4 vp = projection * mat4(mat3(view));
 	gl_Position = vp * vec4(vposition, 1.0);
 }
