@@ -18,7 +18,7 @@ int main(int argc, char** argv)
 	// load scene
 	auto scene = vl::g_resourceManager.Get<vl::Scene>("scenes/cubemap.scn");
 
-	glm::vec3 pos{ 0 };
+	glm::vec3 rot{ 0 };
 
 	bool quit = false;
 	while (!quit)
@@ -28,21 +28,20 @@ int main(int argc, char** argv)
 
 		if (vl::g_inputSystem.GetKeyDown(vl::key_escape)) { quit = true; }
 		
-		auto actor = scene->GetActorFromName<vl::Actor>("Ogre");
+		auto actor = scene->GetActorFromName<vl::Actor>("Model");
 		if (actor)
 		{
-			//actor->GetTransform().rotation.y += (float)vl::g_time.deltaTime * 20.0f;
+			actor->GetTransform().rotation = math::EulerToQuaternion(rot);
 		}
 
 		actor = scene->GetActorFromName<vl::Actor>("Light");
 		if (actor)
 		{
-			actor->GetTransform().position = pos;
+			//actor->GetTransform().position = rot;
 		}
 
-		ImGui::Begin("hello");
-		ImGui::Button("Press");
-		//ImGui::SliderFloat3("position", &pos[0], -3.0f, 3.0f);
+		ImGui::Begin("Transform");
+		ImGui::SliderFloat3("Rotation", &rot[0], -360.0f, 360.0f);
 		ImGui::End();
 
 		scene->Update();

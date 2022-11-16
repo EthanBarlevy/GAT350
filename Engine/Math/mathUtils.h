@@ -22,6 +22,9 @@ namespace math
 	constexpr float DegToRad(float degrees) { return degrees * (PI / 180); }
 	constexpr float RadToDeg(float radians) { return radians * (180 / PI); }
 
+	glm::vec3 QuaternionToEuler(glm::quat q);
+	glm::quat EulerToQuaternion(glm::vec3 euler);
+
 	template<typename T>
 	T Clamp(T value, T min, T max)
 	{

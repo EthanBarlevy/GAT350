@@ -1,5 +1,5 @@
 #pragma once
-#include "Math/vector2.h"
+#include "Math/mathUtils.h"
 #include <vector>
 #include <array>
 #include <cstdint>
@@ -31,7 +31,9 @@ namespace vl
 		bool GetPreviousKeyDown(uint32_t key) { return m_prevKeybardState[key]; }
 
 		// mouse
-		const Vector2& GetMousePosition() const { return m_mousePosition; }
+		const glm::vec2& GetMousePosition() const { return m_mousePosition; }
+		const glm::vec2& GetMouseRelative() const { return m_mouseRelative; }
+
 		State GetButtonState(uint32_t button);
 		bool GetButtonDown(uint32_t button) { return m_mouseButtonState[button]; }
 		bool GetPreviousButtonDown(uint32_t button) { return m_prevMouseButtonState[button]; }
@@ -44,7 +46,10 @@ namespace vl
 		std::vector<uint8_t> m_prevKeybardState;
 
 		// mouse
-		Vector2 m_mousePosition;
+		glm::vec2 m_mousePosition;
+		glm::vec2 m_prevMousePosition;
+		glm::vec2 m_mouseRelative;
+
 		std::array<uint8_t, 3> m_mouseButtonState;
 		std::array<uint8_t, 3> m_prevMouseButtonState;
 	};

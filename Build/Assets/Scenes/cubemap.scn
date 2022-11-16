@@ -10,13 +10,13 @@
           "type": "ModelComponent",
           "model_name": "Models/cube.obj",
           "material_name": "Materials/skybox.mtrl",
-          "depth_test":  false
+          "depth_test": false
         }
       ]
     },
     {
       "type": "Actor",
-      "name": "Ogre",
+      "name": "Model",
       "transform": {
         "position": [
           0,
@@ -62,8 +62,8 @@
           "type": "LightComponent",
           "color": [
             1,
-            0,
-            0
+            1,
+            1
           ],
           "type_name": "directional",
           "cutoff": 25.0,
