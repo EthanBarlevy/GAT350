@@ -23,9 +23,9 @@ namespace vl
 		virtual bool Write(const rapidjson::Value& value) const override;
 		virtual bool Read(const rapidjson::Value& value) override;
 
-		glm::vec3 getRight() { return ((glm::mat4)(*this))[0]; }
-		glm::vec3 getUp() { return ((glm::mat4)(*this))[1]; }
-		glm::vec3 getForwards() { return ((glm::mat4)(*this))[2]; }
+		glm::vec3 getRight() { return rotation * glm::vec3{ 1, 0, 0 }; }
+		glm::vec3 getUp() { return rotation * glm::vec3{ 0, 1, 0 }; }
+		glm::vec3 getForwards() { return rotation * glm::vec3{ 0, 0, 1 }; }
 
 		void Update()
 		{

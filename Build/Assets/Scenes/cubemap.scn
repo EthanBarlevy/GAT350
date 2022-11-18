@@ -29,7 +29,7 @@
           1
         ],
         "rotation": [
-          0,
+          20,
           0,
           0
         ]
@@ -38,6 +38,34 @@
         {
           "type": "ModelComponent",
           "model_name": "Models/ogre.obj",
+          "material_name": "Materials/reflection.mtrl"
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "Model",
+      "transform": {
+        "position": [
+          0,
+          -1,
+          0
+        ],
+        "scale": [
+          5,
+          5,
+          5
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "components": [
+        {
+          "type": "ModelComponent",
+          "model_name": "Models/plane.obj",
           "material_name": "Materials/ogre.mtrl"
         }
       ]
@@ -49,10 +77,10 @@
         "position": [
           0,
           0,
-          2
+          0
         ],
         "rotation": [
-          85,
+          0,
           0,
           0
         ]
@@ -65,7 +93,7 @@
             1,
             1
           ],
-          "type_name": "directional",
+          "type_name": "spot",
           "cutoff": 25.0,
           "exponent": 10.0
         }

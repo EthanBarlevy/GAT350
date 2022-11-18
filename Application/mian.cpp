@@ -19,6 +19,7 @@ int main(int argc, char** argv)
 	auto scene = vl::g_resourceManager.Get<vl::Scene>("scenes/cubemap.scn");
 
 	glm::vec3 rot{ 0 };
+	float ri = 1.5f;
 
 	bool quit = false;
 	while (!quit)
@@ -40,8 +41,17 @@ int main(int argc, char** argv)
 			//actor->GetTransform().position = rot;
 		}
 
+		auto program = vl::g_resourceManager.Get<vl::Program>("shaders/fx/refraction.prog");
+		if (program)
+		{
+			program->Use();
+			program->SetUniform("ri", ri);
+		}
+
+
 		ImGui::Begin("Transform");
-		ImGui::SliderFloat3("Rotation", &rot[0], -360.0f, 360.0f);
+		ImGui::DragFloat3("Rotation", &rot[0]);
+		ImGui::DragFloat("Refraction", &ri, 0.01f, 1.0, 3.0);
 		ImGui::End();
 
 		scene->Update();
