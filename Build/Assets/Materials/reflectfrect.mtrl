@@ -1,0 +1,11 @@
+{
+  "program": "shaders/fx/re-fract-flect.prog",
+  "cubemap": "textures/Rainbow/",
+  "cubemap_extension": ".jpg",
+  "color": [
+    1,
+    1,
+    1
+  ],
+  "shininess": 256
+} 

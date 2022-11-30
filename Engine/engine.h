@@ -35,6 +35,7 @@
 #include "Renderer/material.h"
 #include "Renderer/vertexBuffer.h"
 #include "Renderer/cubemapTexture.h"
+#include "Renderer/framebuffer.h"
 
 #include "Components/playerComponent.h"
 #include "Components/RenderComponents/spriteComponent.h"

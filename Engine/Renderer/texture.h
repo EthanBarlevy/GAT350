@@ -1,5 +1,5 @@
 #pragma once
-#include "Math/vector2.h"
+#include "Math/mathUtils.h"
 #include "Resource/resource.h"
 #include "renderer.h"
 #include <string>
@@ -19,6 +19,8 @@ namespace vl
 
 		bool Create(std::string name, ...) override;
 		bool Create(Renderer& renderer, const std::string& filename);
+		bool CreateTexture(int width, int height);
+		bool CreateDepthTexture(int width, int height);
 		bool CreateFromSurface(SDL_Surface* surface, Renderer& renderer);
 
 		bool Load(const std::string& filename);
@@ -28,9 +30,10 @@ namespace vl
 
 		static GLenum GetInternalFormat(GLuint format);
 
-		Vector2 GetSize() const;
+		glm::ivec2 GetSize() const;
 
 		friend class Renderer;
+		friend class Framebuffer;
 
 	protected:
 		void FlipSurface(SDL_Surface* surface);
@@ -38,5 +41,7 @@ namespace vl
 	protected:
 		GLuint m_texture{ 0 };
 		GLenum m_target{ GL_TEXTURE_2D };
+		int m_width = 0;
+		int m_height = 0;
 	};
 }

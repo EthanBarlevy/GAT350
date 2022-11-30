@@ -1,0 +1,4 @@
+{
+	"vertex_shader": "shaders/fx/re-fract-flect.vert",
+	"fragment_shader": "shaders/fx/re-fract-flect.frag"
+}

@@ -150,13 +150,16 @@
     <None Include="..\Build\Assets\Materials\multi.mtrl" />
     <None Include="..\Build\Assets\Materials\ogre.mtrl" />
     <None Include="..\Build\Assets\Materials\dolphin.mtrl" />
+    <None Include="..\Build\Assets\Materials\reflectfrect.mtrl" />
     <None Include="..\Build\Assets\Materials\reflection.mtrl" />
     <None Include="..\Build\Assets\Materials\refraction.mtrl" />
+    <None Include="..\Build\Assets\Materials\rtt.mtrl" />
     <None Include="..\Build\Assets\Materials\skybox.mtrl" />
     <None Include="..\Build\Assets\Materials\sword.mtrl" />
     <None Include="..\Build\Assets\Scenes\basic.scn" />
     <None Include="..\Build\Assets\Scenes\basic_lit.scn" />
     <None Include="..\Build\Assets\Scenes\cubemap.scn" />
+    <None Include="..\Build\Assets\Scenes\rtt.scn" />
     <None Include="..\Build\Assets\Scenes\texture.scn" />
     <None Include="..\Build\Assets\Shaders\basic.frag" />
     <None Include="..\Build\Assets\Shaders\basic.prog" />
@@ -170,6 +173,9 @@
     <None Include="..\Build\Assets\Shaders\FX\cell.frag" />
     <None Include="..\Build\Assets\Shaders\FX\cell.prog" />
     <None Include="..\Build\Assets\Shaders\FX\cell.vert" />
+    <None Include="..\Build\Assets\Shaders\FX\re-fract-flect.frag" />
+    <None Include="..\Build\Assets\Shaders\FX\re-fract-flect.prog" />
+    <None Include="..\Build\Assets\Shaders\FX\re-fract-flect.vert" />
     <None Include="..\Build\Assets\Shaders\FX\reflection.frag" />
     <None Include="..\Build\Assets\Shaders\FX\reflection.prog" />
     <None Include="..\Build\Assets\Shaders\FX\reflection.vert" />

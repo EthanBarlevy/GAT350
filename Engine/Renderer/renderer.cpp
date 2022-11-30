@@ -24,14 +24,15 @@ namespace vl
 		IMG_Quit();
 	}
 
-	void Renderer::CreateWindow(const char* name, int width, int height, bool fullscreen)
+	void Renderer::CreateWindow(const std::string& name, int width, int height, bool fullscreen)
 	{
-		m_width = width;
-		m_height = height;
+		this->width = width;
+		this->height = height;
+		this->fullscreen = fullscreen;
 
 		int flags = (fullscreen) ? SDL_WINDOW_FULLSCREEN : (SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
 
-		m_window = SDL_CreateWindow(name, 100, 100, width, height, SDL_WINDOW_OPENGL | flags);
+		m_window = SDL_CreateWindow(name.c_str(), 100, 100, width, height, SDL_WINDOW_OPENGL | flags);
 
 		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
 		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
@@ -47,6 +48,16 @@ namespace vl
 		glViewport(0, 0, width, height);
 		glEnable(GL_DEPTH_TEST);
 		glDepthFunc(GL_LESS);
+	}
+
+	void Renderer::SetViewport(int x, int y, int width, int height)
+	{
+		glViewport(x, y, width, height);
+	}
+
+	void Renderer::RestoreViewport()
+	{
+		glViewport(0, 0, width, height);
 	}
 
 	void Renderer::BeginFrame()
@@ -85,20 +96,20 @@ namespace vl
 
 	void Renderer::Draw(std::shared_ptr<Texture> texture, const Vector2& position, float angle, const Vector2& scale, const Vector2& registration)
 	{
-		Vector2 size = texture->GetSize();
-		size *= scale;
+		//glm::ivec2 size = texture->GetSize();
+		//size *= scale;
 
-		// setting the registration point (middle is default)
-		Vector2 origin = (size * registration);
-		Vector2 tposition = position - origin;
+		//// setting the registration point (middle is default)
+		//glm::ivec2 origin = (size * registration);
+		//glm::ivec2 tposition = position - origin;
 
-		SDL_Rect dest;
-		dest.x = (int)tposition.x;
-		dest.y = (int)tposition.y;
-		dest.w = (int)size.x;
-		dest.h = (int)size.y;
+		//SDL_Rect dest;
+		//dest.x = (int)tposition.x;
+		//dest.y = (int)tposition.y;
+		//dest.w = (int)size.x;
+		//dest.h = (int)size.y;
 
-		SDL_Point center{ (int)origin.x, (int)origin.y };
+		//SDL_Point center{ (int)origin.x, (int)origin.y };
 
 		//SDL_RenderCopyEx(m_renderer, texture->m_texture, nullptr, &dest, angle, &center, SDL_FLIP_NONE);
 	}

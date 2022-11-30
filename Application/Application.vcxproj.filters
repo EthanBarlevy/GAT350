@@ -171,6 +171,24 @@
     <None Include="..\Build\Assets\Materials\refraction.mtrl">
       <Filter>Resource Files\Materials</Filter>
     </None>
+    <None Include="..\Build\Assets\Shaders\FX\re-fract-flect.prog">
+      <Filter>Resource Files\Shaders\FX</Filter>
+    </None>
+    <None Include="..\Build\Assets\Shaders\FX\re-fract-flect.vert">
+      <Filter>Resource Files\Shaders\FX</Filter>
+    </None>
+    <None Include="..\Build\Assets\Shaders\FX\re-fract-flect.frag">
+      <Filter>Resource Files\Shaders\FX</Filter>
+    </None>
+    <None Include="..\Build\Assets\Materials\reflectfrect.mtrl">
+      <Filter>Resource Files\Materials</Filter>
+    </None>
+    <None Include="..\Build\Assets\Scenes\rtt.scn">
+      <Filter>Resource Files\Scenes</Filter>
+    </None>
+    <None Include="..\Build\Assets\Materials\rtt.mtrl">
+      <Filter>Resource Files\Materials</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mian.cpp">

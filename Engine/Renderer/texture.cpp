@@ -49,6 +49,46 @@ namespace vl
         return true;
     }
 
+    bool Texture::CreateTexture(int width, int height)
+    {
+        m_target = GL_TEXTURE_2D;
+        m_width = width;
+        m_height = height;
+
+        glGenTextures(1, &m_texture);
+        glBindTexture(m_target, m_texture);
+
+        // create texture (width, height)
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+
+        glTexParameteri(m_target, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glTexParameteri(m_target, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        glTexParameteri(m_target, GL_TEXTURE_WRAP_S, GL_CLAMP);
+        glTexParameteri(m_target, GL_TEXTURE_WRAP_T, GL_CLAMP);
+
+        return true;
+    }
+
+    bool Texture::CreateDepthTexture(int width, int height)
+    {
+        m_target = GL_TEXTURE_2D;
+        m_width = width;
+        m_height = height;
+
+        glGenTextures(1, &m_texture);
+        glBindTexture(m_target, m_texture);
+
+        // create texture (width, height)
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, width, height, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
+
+        glTexParameteri(m_target, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glTexParameteri(m_target, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        glTexParameteri(m_target, GL_TEXTURE_WRAP_S, GL_CLAMP);
+        glTexParameteri(m_target, GL_TEXTURE_WRAP_T, GL_CLAMP);
+
+        return true;
+    }
+
     bool Texture::CreateFromSurface(SDL_Surface* surface, Renderer& renderer)
     {
         // DEPRECATED 
@@ -128,17 +168,11 @@ namespace vl
 
     }
 
-    Vector2 Texture::GetSize() const
+    glm::ivec2 Texture::GetSize() const
     {
-        // DEPRECATED
-        /*
-        SDL_Point point;
-        SDL_QueryTexture(m_texture, nullptr, nullptr, &point.x, &point.y);
-
-        return Vector2(point.x, point.y);
-        */
-        return { 0, 0 };
+        return glm::ivec2{ m_width, m_height };
     }
+
     void Texture::FlipSurface(SDL_Surface* surface)
     {
         SDL_LockSurface(surface);
