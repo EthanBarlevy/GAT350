@@ -1,0 +1,13 @@
+{
+  "program": "shaders/lit/texture.prog",
+  "textures": [
+    "Models/FINAL/igloo2/texture.png",
+    "Models/FINAL/texture_2.png"
+  ],
+   "color" : [
+     1,
+     1,
+     1
+   ],
+   "shininess" : 64
+} 

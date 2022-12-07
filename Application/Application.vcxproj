@@ -146,6 +146,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Build\Assets\Materials\box.mtrl" />
+    <None Include="..\Build\Assets\Materials\FINAL\campfire.mtrl" />
+    <None Include="..\Build\Assets\Materials\FINAL\Igloo.mtrl" />
+    <None Include="..\Build\Assets\Materials\FINAL\tree.mtrl" />
     <None Include="..\Build\Assets\Materials\ground.mtrl" />
     <None Include="..\Build\Assets\Materials\multi.mtrl" />
     <None Include="..\Build\Assets\Materials\ogre.mtrl" />
@@ -159,6 +162,7 @@
     <None Include="..\Build\Assets\Scenes\basic.scn" />
     <None Include="..\Build\Assets\Scenes\basic_lit.scn" />
     <None Include="..\Build\Assets\Scenes\cubemap.scn" />
+    <None Include="..\Build\Assets\Scenes\FINAL.scn" />
     <None Include="..\Build\Assets\Scenes\rtt.scn" />
     <None Include="..\Build\Assets\Scenes\texture.scn" />
     <None Include="..\Build\Assets\Shaders\basic.frag" />

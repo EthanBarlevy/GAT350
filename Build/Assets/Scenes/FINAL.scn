@@ -1,0 +1,412 @@
+{
+  "clear_color": [ 0, 0, 0 ],
+  "ambient_color": [0.2, 0.2, 0.2],
+  "actors": [
+    {
+      "type": "Actor",
+      "name": "Skybox",
+      "components": [
+        {
+          "type": "ModelComponent",
+          "model_name": "Models/cube.obj",
+          "material_name": "Materials/skybox.mtrl",
+          "depth_test": false
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "Igloo",
+      "transform": {
+        "position": [
+          0.25,
+          -0.7,
+          0
+        ],
+        "scale": [
+          0.05,
+          0.05,
+          0.05
+        ],
+        "rotation": [
+          0,
+          70,
+          0
+        ]
+      },
+      "components": [
+        {
+          "type": "ModelComponent",
+          "model_name": "Models/FINAL/igloo2/igloo.obj",
+          "material_name": "Materials/FINAL/Igloo.mtrl"
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "Igloo2",
+      "transform": {
+        "position": [
+          -1.5,
+          -0.7,
+          -1
+        ],
+        "scale": [
+          0.07,
+          0.07,
+          0.07
+        ],
+        "rotation": [
+          0,
+          150,
+          0
+        ]
+      },
+      "components": [
+        {
+          "type": "ModelComponent",
+          "model_name": "Models/FINAL/igloo2/igloo.obj",
+          "material_name": "Materials/FINAL/Igloo.mtrl"
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "Igloo3",
+      "transform": {
+        "position": [
+          1,
+          -0.7,
+          1.5
+        ],
+        "scale": [
+          0.04,
+          0.04,
+          0.04
+        ],
+        "rotation": [
+          0,
+          85,
+          0
+        ]
+      },
+      "components": [
+        {
+          "type": "ModelComponent",
+          "model_name": "Models/FINAL/igloo2/igloo.obj",
+          "material_name": "Materials/FINAL/Igloo.mtrl"
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "Igloo4",
+      "transform": {
+        "position": [
+          -1.5,
+          -0.7,
+          0.75
+        ],
+        "scale": [
+          0.045,
+          0.045,
+          0.045
+        ],
+        "rotation": [
+          0,
+          210,
+          0
+        ]
+      },
+      "components": [
+        {
+          "type": "ModelComponent",
+          "model_name": "Models/FINAL/igloo2/igloo.obj",
+          "material_name": "Materials/FINAL/Igloo.mtrl"
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "Tree1",
+      "transform": {
+        "position": [
+          -1.5,
+          -0.7,
+          -1
+        ],
+        "scale": [
+          0.4,
+          0.4,
+          0.4
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "components": [
+        {
+          "type": "ModelComponent",
+          "model_name": "Models/FINAL/tree/tree2.obj",
+          "material_name": "Materials/FINAL/tree.mtrl"
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "Tree2",
+      "transform": {
+        "position": [
+          1.5,
+          -0.7,
+          -1
+        ],
+        "scale": [
+          0.4,
+          0.4,
+          0.4
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "components": [
+        {
+          "type": "ModelComponent",
+          "model_name": "Models/FINAL/tree/tree2.obj",
+          "material_name": "Materials/FINAL/tree.mtrl"
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "Tree3",
+      "transform": {
+        "position": [
+          3,
+          -0.7,
+          0
+        ],
+        "scale": [
+          0.43,
+          0.43,
+          0.43
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "components": [
+        {
+          "type": "ModelComponent",
+          "model_name": "Models/FINAL/tree/tree2.obj",
+          "material_name": "Materials/FINAL/tree.mtrl"
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "Tree4",
+      "transform": {
+        "position": [
+          -2,
+          -0.7,
+          1.2
+        ],
+        "scale": [
+          0.38,
+          0.38,
+          0.38
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "components": [
+        {
+          "type": "ModelComponent",
+          "model_name": "Models/FINAL/tree/tree2.obj",
+          "material_name": "Materials/FINAL/tree.mtrl"
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "Tree5",
+      "transform": {
+        "position": [
+          -0.3,
+          -0.7,
+          -1.5
+        ],
+        "scale": [
+          0.42,
+          0.42,
+          0.42
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "components": [
+        {
+          "type": "ModelComponent",
+          "model_name": "Models/FINAL/tree/tree2.obj",
+          "material_name": "Materials/FINAL/tree.mtrl"
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "Fire",
+      "transform": {
+        "position": [
+          -0.5,
+          -0.7,
+          0.7
+        ],
+        "scale": [
+          0.015,
+          0.015,
+          0.015
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "components": [
+        {
+          "type": "ModelComponent",
+          "model_name": "Models/FINAL/campfire/fire.obj",
+          "material_name": "Materials/FINAL/campfire.mtrl"
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "Floor",
+      "transform": {
+        "position": [
+          0,
+          -0.7,
+          0
+        ],
+        "scale": [
+          20,
+          20,
+          20
+        ],
+        "rotation": [
+          90,
+          0,
+          0
+        ]
+      },
+      "components": [
+        {
+          "type": "ModelComponent",
+          "model_name": "Models/quad.obj",
+          "material_name": "Materials/reflection.mtrl"
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "Light",
+      "transform": {
+        "position": [
+          0,
+          2,
+          0
+        ],
+        "rotation": [
+          90,
+          0,
+          0
+        ]
+      },
+      "components": [
+        {
+          "type": "LightComponent",
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "type_name": "directional",
+          "cutoff": 25.0,
+          "exponent": 10.0
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "Light2",
+      "transform": {
+        "position": [
+          -0.5,
+          -0.7,
+          0.7
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "components": [
+        {
+          "type": "LightComponent",
+          "color": [
+            1,
+            0.6,
+            0
+          ],
+          "type_name": "point",
+          "cutoff": 25.0,
+          "exponent": 10.0
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "Camera",
+      "transform": {
+        "position": [
+          0,
+          0,
+          4
+        ],
+        "rotation": [
+          0,
+          180,
+          0
+        ]
+      },
+      "components": [
+        {
+          "type": "CameraComponent",
+          "fov": 45,
+          "near": 0.1,
+          "far": 100
+        },
+        {
+          "type": "CameraController",
+          "speed": 4
+        }
+      ]
+    }
+  ]
+}

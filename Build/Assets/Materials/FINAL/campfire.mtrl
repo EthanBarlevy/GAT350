@@ -1,0 +1,12 @@
+{
+  "program": "shaders/lit/texture.prog",
+  "textures": [
+    "Models/FINAL/campfire/Textures/woodsground_diffuse.jpg"
+  ],
+   "color" : [
+     1,
+     1,
+     1
+   ],
+   "shininess" : 64
+} 

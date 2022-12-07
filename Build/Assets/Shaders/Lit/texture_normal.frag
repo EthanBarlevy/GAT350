@@ -3,6 +3,7 @@
 #define POINT       0
 #define DIRECTIONAL 1
 #define SPOTLIGHT   2
+#define MAX_LIGHTS  5
 
 in vec2 coords;
 in vec3 position;
@@ -19,7 +20,7 @@ uniform struct Light
 	vec3 direction;
 	float cutoff;
 	float exponent;
-} light;
+}  lights[MAX_LIGHTS];
 
 uniform struct Material
 {
@@ -32,7 +33,10 @@ uniform struct Material
 layout (binding = 0) uniform sampler2D diffuse_map; // diffuse
 layout (binding = 1) uniform sampler2D normal_map; // normal
 
-void phong(vec3 position, vec3 normal, out vec3 ambient, out vec3 diffuse, out vec3 specular)
+uniform int light_count;
+uniform vec3 ambient_color;
+
+void phong(Light light, vec3 position, vec3 normal, out vec3 diffuse, out vec3 specular)
 {
 	// directional vector to light
 	vec3 light_dir = (light.type == DIRECTIONAL) ? normalize(-light.direction) : normalize(vec3(light.position) - position);
@@ -50,12 +54,9 @@ void phong(vec3 position, vec3 normal, out vec3 ambient, out vec3 diffuse, out v
 		spot_intensity = (angle < light.cutoff) ? pow(cosine, light.exponent) : 0;
 	}
 
-	// Ambient
-	ambient = light.ambient * material.color;
-
 	// Diffuse
 	// calculate light intensitly with dot product (normal * direction)
-	float intensity = max(dot(light_dir, normal), 0);
+	float intensity = max(dot(light_dir, normal), 0) * spot_intensity;
 	diffuse = light.color * material.color * intensity;
 
 	// Specular
@@ -64,7 +65,7 @@ void phong(vec3 position, vec3 normal, out vec3 ambient, out vec3 diffuse, out v
 	{
 		vec3 reflection = reflect(-light_dir, normal);
 		vec3 view_dir = normalize(-vec3(position));
-		intensity = max(dot(reflection, view_dir), 0) * spot_intensity;
+		intensity = max(dot(reflection, view_dir), 0);
 		intensity = pow(intensity, material.shininess);
 		specular = light.color * material.color * intensity;
 	}
@@ -72,17 +73,19 @@ void phong(vec3 position, vec3 normal, out vec3 ambient, out vec3 diffuse, out v
 
 void main()
 {
-	vec3 ambient, diffuse, specular;
+	// initialize color with ambient color 
+	fColor = vec4(ambient_color, 1) * texture(diffuse_map, coords); 
+	// calculate phong (diffuse, specular) for each light and add to color 
+	for (int i = 0; i < light_count; i++) 
+	{ 
+		vec3 diffuse; 
+		vec3 specular; 
 
-	vec2 tcoords = (coords * material.uv_tiling) + material.uv_offset;
-	
-	vec3 normal = texture(normal_map, tcoords).rgb;
-	normal = (normal * 2) - 1;
-	normal = normalize(tbn * normal);
+		vec3 normal = texture(normal_map, coords).rgb;
+		normal = (normal * 2) - 1;
+		normal = normalize(tbn * normal);
 
-	phong(position, normal, ambient, diffuse, specular);
-
-	vec4 tcolor = texture(diffuse_map, tcoords);
-
-	fColor = vec4(ambient + diffuse, 1) * tcolor + vec4(specular, 1);
+		phong(lights[i], position, normal, diffuse, specular); 
+		fColor += (vec4(diffuse, 1) * texture(diffuse_map, coords)) + vec4(specular, 1); 
+	}
 }

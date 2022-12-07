@@ -1,0 +1,12 @@
+{
+  "program": "shaders/lit/texture.prog",
+  "textures": [
+    "Models/FINAL/tree/tree.jpg"
+  ],
+   "color" : [
+     1,
+     1,
+     1
+   ],
+   "shininess" : 6000
+} 

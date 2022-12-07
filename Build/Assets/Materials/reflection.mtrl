@@ -1,6 +1,6 @@
 {
   "program": "shaders/fx/reflection.prog",
-  "cubemap": "textures/Rainbow/",
+  "cubemap": "textures/ice3/",
   "cubemap_extension": ".jpg",
    "color" : [
      1,

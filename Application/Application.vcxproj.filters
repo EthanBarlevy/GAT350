@@ -189,6 +189,18 @@
     <None Include="..\Build\Assets\Materials\rtt.mtrl">
       <Filter>Resource Files\Materials</Filter>
     </None>
+    <None Include="..\Build\Assets\Scenes\FINAL.scn">
+      <Filter>Resource Files\Scenes</Filter>
+    </None>
+    <None Include="..\Build\Assets\Materials\FINAL\Igloo.mtrl">
+      <Filter>Resource Files\Materials</Filter>
+    </None>
+    <None Include="..\Build\Assets\Materials\FINAL\campfire.mtrl">
+      <Filter>Resource Files\Materials</Filter>
+    </None>
+    <None Include="..\Build\Assets\Materials\FINAL\tree.mtrl">
+      <Filter>Resource Files\Materials</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mian.cpp">
